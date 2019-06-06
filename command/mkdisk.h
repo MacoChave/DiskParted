@@ -55,6 +55,7 @@ void exec_mkdisk()
     strftime(mbr.mbr_creation, sizeof(mbr.mbr_creation) - 1, "%d/%m/%y %H:%M", date);
 
     updateMBR(mbr);
+    printf(ANSI_COLOR_GREEN "[i] Disco de %d bytes creado en %s\n" ANSI_COLOR_RESET, values.size, values.path);
 }
 
 #endif
