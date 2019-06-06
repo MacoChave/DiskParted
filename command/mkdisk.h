@@ -7,7 +7,7 @@
 void exec_mkdisk()
 {
     MBR mbr;
-    if (strlen(values.path) <= 0 && values.size < 1)
+    if (strlen(values.path) <= 0 || values.size < 1)
     {
         printf(ANSI_COLOR_RED "[e] Path y/o size requerido\n" ANSI_COLOR_RESET);
         return;

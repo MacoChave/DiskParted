@@ -6,6 +6,7 @@
 
 #include "command/mkdisk.h"
 #include "command/rmdisk.h"
+#include "command/fdisk.h"
 
 extern void exec_exec();
 
@@ -251,6 +252,7 @@ int loadCommand(char input[])
                 exec_rmdisk();
                 break;
             case _FDISK_:
+                exec_fdisk();
                 break;
             case _MOUNT_:
                 break;
