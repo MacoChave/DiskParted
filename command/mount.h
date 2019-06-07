@@ -61,14 +61,14 @@ void mounting(MBR mbr)
     if (i == _ERROR_)
     {
         i = getNumberExtendedPart(mbr.partitions);
-        EBR ebr = getEBR(mbr.partitions[i].part_start);
+        EBR ebr = getEBR(values.path, mbr.partitions[i].part_start);
         clearSpaceDisk();
         getSpaceLogicalDetail(ebr, mbr.partitions[i].part_start + mbr.partitions[i].part_size);
         for (int i = 0; i < 50; i++)
         {
             if (spaces[i].type == 'l')
             {
-                ebr = getEBR(spaces[i].start);
+                ebr = getEBR(values.path, spaces[i].start);
                 if (strcmp(ebr.ebr_name, values.name) == 0)
                 {
                     partMount.mount_size = ebr.part_size;
@@ -108,13 +108,13 @@ void exec_mount()
         return;
     }
 
-    if (!existDisk())
+    if (!existDisk(values.path))
     {
         printf(ANSI_COLOR_RED "[e] Disco %s no existe\n" ANSI_COLOR_RESET, values.path);
         return;
     }
 
-    MBR mbr = getMBR();
+    MBR mbr = getMBR(values.path);
 
     mounting(mbr);
 }

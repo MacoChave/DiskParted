@@ -20,19 +20,19 @@ void exec_mkdisk()
     else
         values.size = values.size * 1024;
     
-    if (!createDirectory())
+    if (!createDirectory(values.path))
     {
         printf(ANSI_COLOR_RED "[e] No se puede crear el directorio %s\n" ANSI_COLOR_RESET, values.path);
         return;
     }
 
-    if (existDisk())
+    if (existDisk(values.path))
     {
         printf(ANSI_COLOR_RED "[e] El disco ya existe\n" ANSI_COLOR_RESET);
         return;
     }
 
-    if (!createDisk())
+    if (!createDisk(values.path))
     {
         printf(ANSI_COLOR_RED "[e] No se pudo crear el disco\n" ANSI_COLOR_RESET);
         return;
@@ -55,7 +55,7 @@ void exec_mkdisk()
     struct tm * date = localtime(&currentDate);
     strftime(mbr.mbr_creation, sizeof(mbr.mbr_creation) - 1, "%d/%m/%y %H:%M", date);
 
-    updateMBR(mbr);
+    updateMBR(values.path, mbr);
     printf(ANSI_COLOR_GREEN "[i] Disco de %d bytes creado en %s\n" ANSI_COLOR_RESET, values.size, values.path);
 }
 

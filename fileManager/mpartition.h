@@ -189,7 +189,7 @@ void getSpaceLogicalDetail (EBR ebr, int end)
             prev = ebr.part_start;
             s++;
             if (ebr.part_next > 0)
-                ebr = getEBR(ebr.part_next);
+                ebr = getEBR(values.path, ebr.part_next);
             else
                 return;
         }

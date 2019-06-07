@@ -12,7 +12,7 @@ void exec_rmdisk()
         return;
     }
 
-    if (!existDisk())
+    if (!existDisk(values.path))
     {
         printf(ANSI_COLOR_RED "[e] No se encontró un disco en %s\n" ANSI_COLOR_RESET, values.path);
         return;
@@ -23,7 +23,7 @@ void exec_rmdisk()
     fgets(conf, 999, stdin);
     if (conf[0] == 'y' || conf[0] == 'Y')
     {
-        removeDisk();
+        removeDisk(values.path);
         printf(ANSI_COLOR_GREEN "[i] Disco %s eliminado\n" ANSI_COLOR_RESET, values.path);
     }
 }

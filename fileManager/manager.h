@@ -4,17 +4,17 @@
 #include <stdio.h>
 #include "../var/globals.h"
 
-int createDirectory()
+int createDirectory(char path[])
 {
     int i = 0;
     char cmd[300] = {0};
     char file_dir[300] = {0};
     char temp[300] = {0};
     strcat(cmd, "mkdir -m 777 -p \"");
-    while (values.path[i] != '\0')
+    while (path[i] != '\0')
     {
-        char directory[300] = {values.path[i], '\0'};
-        if (values.path[i] != '/' && values.path[i] != '.')
+        char directory[300] = {path[i], '\0'};
+        if (path[i] != '/' && path[i] != '.')
             strcat(temp, directory);
         else if (values.path[i] == '/')
         {
@@ -31,10 +31,10 @@ int createDirectory()
     return (system(cmd) == 0) ? 1 : 0;
 }
 
-int existDisk()
+int existDisk(char path[])
 {
     FILE * file;
-    file = fopen(values.path, "r");
+    file = fopen(path, "r");
     
     if (file != NULL)
     {
@@ -45,10 +45,10 @@ int existDisk()
     return 0;
 }
 
-int createDisk()
+int createDisk(char path[])
 {
     FILE * file;
-    file = fopen(values.path, "wb");
+    file = fopen(path, "wb");
     
     if (file != NULL)
     {
@@ -68,15 +68,15 @@ int createDisk()
     return 0;
 }
 
-int removeDisk()
+int removeDisk(char path[])
 {
-    return (remove(values.path) == 0) ? 1 : 0;
+    return (remove(path) == 0) ? 1 : 0;
 }
 
-int updateMBR(MBR mbr)
+int updateMBR(char path[], MBR mbr)
 {
     FILE * file;
-    file = fopen(values.path, "rb+");
+    file = fopen(path, "rb+");
     
     if (file != NULL)
     {
@@ -89,12 +89,12 @@ int updateMBR(MBR mbr)
     return 0;
 }
 
-MBR getMBR()
+MBR getMBR(char path[])
 {
     MBR mbr;
     mbr.size = 0;
     FILE * file;
-    file = fopen(values.path, "rb");
+    file = fopen(path, "rb");
 
     if (file != NULL)
     {
@@ -106,10 +106,10 @@ MBR getMBR()
     return mbr;
 }
 
-int updateEBR(EBR ebr, int start)
+int updateEBR(char path[], EBR ebr, int start)
 {
     FILE * file;
-    file = fopen(values.path, "rb+");
+    file = fopen(path, "rb+");
 
     if (file != NULL)
     {
@@ -122,13 +122,13 @@ int updateEBR(EBR ebr, int start)
     return 0;
 }
 
-EBR getEBR (int start)
+EBR getEBR (char path[], int start)
 {
     EBR ebr;
     ebr.part_next = -1;
     ebr.part_size = -1;
     FILE * file;
-    file = fopen(values.path, "rb");
+    file = fopen(path, "rb");
 
     if (file != NULL)
     {

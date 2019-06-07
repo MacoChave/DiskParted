@@ -14,14 +14,14 @@ void createExtendedPartition (int start)
     ebr.part_start = start;
     ebr.part_status = '0';
 
-    updateEBR(ebr, start);
+    updateEBR(values.path, ebr, start);
     printf(ANSI_COLOR_GREEN "[i] Se creó la partición extendida %s\n" ANSI_COLOR_RESET, ebr.ebr_name);
 }
 
 void createLogicalPartition (Partition part, char fit)
 {
     int idx = -1;
-    EBR ebr = getEBR(part.part_start);
+    EBR ebr = getEBR(values.path, part.part_start);
     if (ebr.part_size < 0)
     {
         printf(ANSI_COLOR_RED "[e] Se ha perdido el ebr de la partición lógica\n" ANSI_COLOR_RESET);
@@ -55,7 +55,7 @@ void createLogicalPartition (Partition part, char fit)
     {
         if (spaces[idx].space > 0)
         {
-            EBR ebr = getEBR(spaces[idx].start);
+            EBR ebr = getEBR(values.path, spaces[idx].start);
             if (strcmp(ebr.ebr_name, values.name) == 0)
             {
                 printf(ANSI_COLOR_RED "[e] Ya existe una partición %s\n" ANSI_COLOR_RESET, values.name);
@@ -83,24 +83,24 @@ void createLogicalPartition (Partition part, char fit)
 
     if (spaces[idx].prev > 0)
     {
-        EBR prev = getEBR(spaces[idx].prev);
+        EBR prev = getEBR(values.path, spaces[idx].prev);
         
         if (prev.part_next > 0 && prev.part_next != new_ebr.part_start)
             new_ebr.part_next = prev.part_next;
         
         prev.part_next = spaces[idx].start;
-        updateEBR(prev, prev.part_start);
+        updateEBR(values.path, prev, prev.part_start);
     }
 
     if (spaces[idx].next < 0)
     {
         new_blank.part_start = spaces[idx].start + values.size + sizeof(EBR);
         new_ebr.part_next = new_blank.part_start;
-        updateEBR(new_blank, new_blank.part_start);
+        updateEBR(values.path, new_blank, new_blank.part_start);
     }
     else
         new_ebr.part_next = spaces[idx].next;
-    updateEBR(new_ebr, new_ebr.part_start);
+    updateEBR(values.path, new_ebr, new_ebr.part_start);
     printf(ANSI_COLOR_GREEN "[i] Se creó la partición lógica %s\n" ANSI_COLOR_RESET, new_ebr.ebr_name);
 }
 
@@ -119,7 +119,7 @@ void createPart()
     Partition newPart;
     int idx = -1;
     int ext = -1;
-    MBR mbr = getMBR();
+    MBR mbr = getMBR(values.path);
     ext = getNumberExtendedPart(mbr.partitions);
 
     if (mbr.size == 0)
@@ -187,7 +187,7 @@ void createPart()
             part.part_type = values.type;
             mbr.partitions[i] = part;
             mbr = sortMBR(mbr);
-            updateMBR(mbr);
+            updateMBR(values.path, mbr);
             if (values.type == 'e')
                 createExtendedPartition(part.part_start);
             printf(ANSI_COLOR_GREEN "[i] Partición %s : %d creada en disco %s\n" ANSI_COLOR_RESET, part.part_name, part.part_size, values.path);
@@ -205,7 +205,7 @@ void exec_fdisk()
         return;
     }
 
-    if (!existDisk())
+    if (!existDisk(values.path))
     {
         printf(ANSI_COLOR_RED "[e] El disco %s no existe\n" ANSI_COLOR_RESET, values.path);
         return;
