@@ -19,6 +19,7 @@ int loadCommand(char input[])
 
     int step = 0;
     int quotation_marks = 0;
+    int comment = 0;
 
     char auxiliar[300] = {0};
 
@@ -31,7 +32,10 @@ int loadCommand(char input[])
     while (input[i] != 0)
     {
         if (input[i] == '#')
-            return _EXIT_;
+        {
+            comment = !comment;
+            input[i] = ' ';
+        }
         if (input[i] == '\\')
         {
             isMultiline = !isMultiline;
@@ -39,47 +43,9 @@ int loadCommand(char input[])
             continue;
         }
         if (input[i] == '\n' || input[i] == '\r')
-        {
-            i++;
-            continue;
-        }
+            input[i] = ' ';
         if (input[i] == '$')
         {
-            if (strlen(auxiliar) > 0)
-            {
-                switch (param)
-                {
-                    case _SIZE_:
-                        values.size = atoi(auxiliar);
-                        break;
-                    case _PATH_:
-                        strcpy(values.path, auxiliar);
-                        break;
-                    case _UNIT_:
-                        values.unit = auxiliar[0];
-                        break;
-                    case _NAME_:
-                        strcpy(values.name, auxiliar);
-                        break;
-                    case _TYPE_:
-                        values.type = auxiliar[0];
-                        break;
-                    case _FIT_:
-                        values.fit = auxiliar[0];
-                        break;
-                    case _DELETE_:
-                        strcpy(values.del, auxiliar);
-                        break;
-                    case _ADD_:
-                        values.add = atoi(auxiliar);
-                        break;
-                    case _ID_:
-                        strcpy(values.id, auxiliar);
-                        break;
-                    default:
-                        break;
-                }
-            }
             break;
         }
         if (input[i] == '-' || input[i] == '~')
@@ -105,7 +71,9 @@ int loadCommand(char input[])
             }
             else
             {
-                if (strcasecmp(auxiliar, "mkdisk") == 0)
+                if (strcasecmp(auxiliar, "exit") == 0)
+                    command = _EXIT_;
+                else if (strcasecmp(auxiliar, "mkdisk") == 0)
                     command = _MKDISK_;
                 else if (strcasecmp(auxiliar, "rmdisk") == 0)
                     command = _RMDISK_;
@@ -120,11 +88,7 @@ int loadCommand(char input[])
                 else if (strcasecmp(auxiliar, "exec") == 0)
                     command = _EXEC_;
                 else if (strcasecmp(auxiliar, "pause") == 0)
-                {
-                    char conf[999] = {0};
-                    fgets(auxiliar, 999, stdin);
-                    return 0;
-                }
+                    command = _PAUSE_;
                 else
                 {
                     clearValues();
@@ -233,7 +197,10 @@ int loadCommand(char input[])
                 memset(auxiliar, 0, 300);
                 step = _PARAM_;
                 i++;
-                continue;
+                if (comment)
+                    break;
+                else
+                    continue;
             }
         }
     }
@@ -242,6 +209,9 @@ int loadCommand(char input[])
     {
         switch (command)
         {
+            case _EXIT_:
+                return _EXIT_;
+                break;
             case _EXEC_:
                 exec_exec();
                 break;
@@ -260,8 +230,12 @@ int loadCommand(char input[])
                 break;
             case _REP_:
                 break;
+            case _PAUSE_:
+                {char conf[999] = {0};
+                fgets(auxiliar, 999, stdin);
+                break;}
             default:
-                return _EXIT_;
+                return _ERROR_;
                 break;
         }
         clearValues();
@@ -280,6 +254,7 @@ void exec_exec()
         {
             while (!feof(file))
             {
+                command = -1;
                 fgets(input, 999, file);
                 sprintf(input, "%s\n", input);
                 printf("[d] %s\n", input);

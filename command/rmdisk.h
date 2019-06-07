@@ -19,7 +19,7 @@ void exec_rmdisk()
     }
 
     removeDisk();
-    printf(ANSI_COLOR_GREEN "[i] Disco %d eliminado\n" ANSI_COLOR_RESET, values.path);
+    printf(ANSI_COLOR_GREEN "[i] Disco %s eliminado\n" ANSI_COLOR_RESET, values.path);
 }
 
 #endif

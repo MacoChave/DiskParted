@@ -76,7 +76,7 @@ int removeDisk()
 int updateMBR(MBR mbr)
 {
     FILE * file;
-    file = fopen(values.path, "wb");
+    file = fopen(values.path, "rb+");
     
     if (file != NULL)
     {
@@ -87,6 +87,58 @@ int updateMBR(MBR mbr)
     }
 
     return 0;
+}
+
+MBR getMBR()
+{
+    MBR mbr;
+    mbr.size = 0;
+    FILE * file;
+    file = fopen(values.path, "rb");
+
+    if (file != NULL)
+    {
+        fread(&mbr, sizeof(MBR), 1, file);
+        fclose(file);
+        return mbr;
+    }
+
+    return mbr;
+}
+
+int updateEBR(EBR ebr, int start)
+{
+    FILE * file;
+    file = fopen(values.path, "rb+");
+
+    if (file != NULL)
+    {
+        fseek(file, start, SEEK_SET);
+        fwrite(&ebr, sizeof(EBR), 1, file);
+        fclose(file);
+        return 1;
+    }
+
+    return 0;
+}
+
+EBR getEBR (int start)
+{
+    EBR ebr;
+    ebr.part_next = -1;
+    ebr.part_size = 0;
+    FILE * file;
+    file = fopen(values.path, "rb");
+
+    if (file != NULL)
+    {
+        fseek(file, start, SEEK_SET);
+        fread(&ebr, sizeof(EBR), 1, file);
+        fclose(file);
+        return ebr;
+    }
+
+    return ebr;
 }
 
 #endif

@@ -9,10 +9,11 @@ typedef struct Mount Mount;
 typedef struct PartMount PartMount;
 
 typedef struct Values Values;
+typedef struct SpaceDisk SpaceDisk;
 
 struct Partition 
 {
-    int part_status;
+    char part_status;
     char part_type;
     char part_fit;
     int part_start;
@@ -25,12 +26,13 @@ struct MBR
     int size;
     char mbr_creation[16];
     int mbr_disk_signature;
+    char fit;
     Partition partitions[4];
 };
 
 struct EBR 
 {
-    int part_status;
+    char part_status;
     char part_fit;
     int part_start;
     int part_size;
@@ -67,6 +69,13 @@ struct Values
     char type;
     int size;
     int add;
+};
+
+struct SpaceDisk
+{
+    int start;
+    int space;
+    char type;
 };
 
 #endif

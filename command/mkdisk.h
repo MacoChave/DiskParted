@@ -40,12 +40,13 @@ void exec_mkdisk()
 
     mbr.mbr_disk_signature = 2010;
     mbr.size = values.size;
+    mbr.fit = 'f';
     for (int i = 0; i < 4; i++)
     {
-        mbr.partitions[i].part_status = -1;
+        mbr.partitions[i].part_status ='0';
         mbr.partitions[i].part_type = 'p';
         mbr.partitions[i].part_fit = 'f';
-        mbr.partitions[i].part_start = -1;
+        mbr.partitions[i].part_start = 0;
         mbr.partitions[i].part_size = 0;
         memset(mbr.partitions[i].part_name, 0, 16);
     }
