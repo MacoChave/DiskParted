@@ -17,6 +17,86 @@ void createExtendedPartition (int start)
     updateEBR(ebr, start);
 }
 
+void createLogicalPartition (Partition part, char fit)
+{
+    int idx = -1;
+    EBR ebr = getEBR(part.part_start);
+    if (ebr.part_size < 0)
+    {
+        printf(ANSI_COLOR_RED "[e] Se ha perdido el ebr de la partición lógica\n" ANSI_COLOR_RESET);
+        return;
+    }
+    getSpaceLogicalDetail(ebr, part.part_start + part.part_size);
+    if (fit == 'f')
+        idx = getFirstAdjustPart();
+    else if (fit == 'b')
+    {
+        getBestAdjustPart();
+        idx = getFirstAdjustPart();
+    }
+    else if (fit == 'w')
+    {
+        getWorstAdjustPart();
+        idx = getFirstAdjustPart();
+    }
+
+    if ((spaces[idx].start + values.size + sizeof(EBR)) > (part.part_start + part.part_size))
+    {
+        printf(ANSI_COLOR_RED "[e] No hay espacio en la partición\n" ANSI_COLOR_RESET);
+        return;
+    }
+    for (int i = 0; i < 50; i++)
+    {
+        if (spaces[idx].space > 0)
+        {
+            EBR ebr = getEBR(spaces[idx].start);
+            if (strcmp(ebr.ebr_name, values.name) == 0)
+            {
+                printf(ANSI_COLOR_RED "[e] Ya existe una partición %s\n" ANSI_COLOR_RESET, values.name);
+                return;
+            }
+        }
+    }
+    
+    EBR new_ebr;
+    memset(new_ebr.ebr_name, 0, 16);
+    strcpy(new_ebr.ebr_name, values.name);
+    new_ebr.part_fit = values.fit;
+    new_ebr.part_next = -1;
+    new_ebr.part_size = values.size;
+    new_ebr.part_start = spaces[idx].start;
+    new_ebr.part_status = '0';
+    
+    EBR new_blank;
+    memset(new_blank.ebr_name, 0, 16);
+    new_blank.part_fit = '0';
+    new_blank.part_next = -1;
+    new_blank.part_size = 0;
+    new_blank.part_start = 0;
+    new_blank.part_status = '0';
+
+    if (spaces[idx].prev > 0)
+    {
+        EBR prev = getEBR(spaces[idx].prev);
+        
+        if (prev.part_next > 0 && prev.part_next != new_ebr.part_start)
+            new_ebr.part_next = prev.part_next;
+        
+        prev.part_next = spaces[idx].start;
+        updateEBR(prev, prev.part_start);
+    }
+
+    if (spaces[idx].next < 0)
+    {
+        new_blank.part_start = spaces[idx].start + values.size + sizeof(EBR);
+        new_ebr.part_next = new_blank.part_start;
+        updateEBR(new_blank, new_blank.part_start);
+    }
+    else
+        new_ebr.part_next = spaces[idx].next;
+    updateEBR(new_ebr, new_ebr.part_start);
+}
+
 void deletePart()
 {
 
@@ -30,10 +110,10 @@ void modifyPart()
 void createPart()
 {
     Partition newPart;
-    int start = -1;
-    int has_extended = 0;
-    clearSpaceDisk();
+    int idx = -1;
+    int ext = -1;
     MBR mbr = getMBR();
+    ext = getNumberExtendedPart(mbr.partitions);
 
     if (mbr.size == 0)
     {
@@ -54,24 +134,37 @@ void createPart()
     }
     if (values.type == 'e')
     {
-        if (getNumberExtendedPart(mbr.partitions) != _ERROR_)
+        if (ext != _ERROR_)
         {
             printf(ANSI_COLOR_RED "[e] Ya se encuentra una partición extendida\n" ANSI_COLOR_RESET);
             return;
         }
     }
-    getSpaceDetail(mbr.partitions, mbr.size);
+    if (values.type == 'l')
+    {
+        if (ext == _ERROR_)
+        {
+            printf(ANSI_COLOR_GREEN "[e] No hay partición extendida %s\n" ANSI_COLOR_RESET, values.name);
+            return;
+        }
+        else
+        {
+            createLogicalPartition(mbr.partitions[ext], mbr.fit);
+            return;
+        }
+    }
+    getSpacePrimaryDetail(mbr.partitions, mbr.size);
     if (mbr.fit == 'f')
-        start = getFirstAdjustPart();
+        idx = getFirstAdjustPart();
     else if (mbr.fit == 'b')
     {
         getBestAdjustPart();
-        start = getFirstAdjustPart();
+        idx = getFirstAdjustPart();
     }
     else if (mbr.fit == 'w')
     {
         getWorstAdjustPart();
-        start = getFirstAdjustPart();
+        idx = getFirstAdjustPart();
     }
     
     for (int i = 0; i < 4; i++)
@@ -82,7 +175,7 @@ void createPart()
             part.part_fit = values.fit;
             strcpy(part.part_name, values.name);
             part.part_size = values.size;
-            part.part_start = start;
+            part.part_start = spaces[idx].start;
             part.part_status = '0';
             part.part_type = values.type;
             mbr.partitions[i] = part;
@@ -98,6 +191,7 @@ void createPart()
 
 void exec_fdisk()
 {
+    clearSpaceDisk();
     if (strlen(values.path) < 0 || strlen(values.name) < 0)
     {
         printf(ANSI_COLOR_RED "[e] Path y/o name son requeridos\n" ANSI_COLOR_RESET);

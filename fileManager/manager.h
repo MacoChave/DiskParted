@@ -126,7 +126,7 @@ EBR getEBR (int start)
 {
     EBR ebr;
     ebr.part_next = -1;
-    ebr.part_size = 0;
+    ebr.part_size = -1;
     FILE * file;
     file = fopen(values.path, "rb");
 

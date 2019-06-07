@@ -232,7 +232,7 @@ int loadCommand(char input[])
                 break;
             case _PAUSE_:
                 {char conf[999] = {0};
-                fgets(auxiliar, 999, stdin);
+                fgets(conf, 999, stdin);
                 break;}
             default:
                 return _ERROR_;
@@ -258,7 +258,8 @@ void exec_exec()
                 fgets(input, 999, file);
                 sprintf(input, "%s\n", input);
                 printf("[d] %s\n", input);
-                loadCommand(input);
+                if (input[0] != '#' || input[0] != '\n')
+                    loadCommand(input);
             }            
         }
         else

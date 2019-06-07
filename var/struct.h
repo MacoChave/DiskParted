@@ -76,6 +76,8 @@ struct SpaceDisk
     int start;
     int space;
     char type;
+    int next;
+    int prev;
 };
 
 #endif

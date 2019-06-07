@@ -18,8 +18,14 @@ void exec_rmdisk()
         return;
     }
 
-    removeDisk();
-    printf(ANSI_COLOR_GREEN "[i] Disco %s eliminado\n" ANSI_COLOR_RESET, values.path);
+    printf("¿Desea eliminar el disco %s?\n", values.path);
+    char conf[999] = {0};
+    fgets(conf, 999, stdin);
+    if (conf[0] == 'y' || conf[0] == 'Y')
+    {
+        removeDisk();
+        printf(ANSI_COLOR_GREEN "[i] Disco %s eliminado\n" ANSI_COLOR_RESET, values.path);
+    }
 }
 
 #endif
