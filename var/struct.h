@@ -42,20 +42,18 @@ struct EBR
 
 struct PartMount
 {
-    char mount_status;
     char mount_type;
-    char mount_fit;
     int mount_start;
     int mount_size;
-    char mount_id[5];
+    int mount_id;
     char mount_name[16];
 };
 
 struct Mount
 {
     char path[300];
-    int letter;
-    PartMount parts_mount[10];
+    char letter;
+    PartMount parts_mount[20];
 };
 
 struct Values

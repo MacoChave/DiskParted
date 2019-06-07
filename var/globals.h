@@ -37,31 +37,29 @@
 
 #define ANSI_COLOR_RED     "\x1b[31m"
 #define ANSI_COLOR_GREEN   "\x1b[32m"
+#define ANSI_COLOR_YELLOW  "\x1b[33m"
 #define ANSI_COLOR_BLUE    "\x1b[34m"
 #define ANSI_COLOR_RESET   "\x1b[0m"
 
-Mount disks_mount[26];
+Mount disks_mount[10];
 Values values;
 int isMultiline;
 int command;
 
-void initDisksMount() 
+void initDisksMount()
 {
-    for (int i = 0; i < 26; i++)
+    for (int i = 0; i < 10; i++)
     {
-        disks_mount[i].letter = -1;
+        disks_mount[i].letter = '0';
         memset(&disks_mount[i].path, 0, 300);
-        for (int j = 0; j < 10; j++)
+        for (int j = 0; j < 20; j++)
         {
-            disks_mount[i].parts_mount[j].mount_status = 'n';
-            disks_mount[i].parts_mount[j].mount_type = 'p';
-            disks_mount[i].parts_mount[j].mount_fit = 'f';
+            disks_mount[i].parts_mount[j].mount_type = '0';
+            disks_mount[i].parts_mount[j].mount_start = 0;
+            disks_mount[i].parts_mount[j].mount_size = 0;
+            disks_mount[i].parts_mount[j].mount_id = 0;
             
-            disks_mount[i].parts_mount[j].mount_start = -1;
-            disks_mount[i].parts_mount[j].mount_size = -1;
-
-            memset(&disks_mount[i].parts_mount[j].mount_id, 0, 5);
-            memset(&disks_mount[i].parts_mount[j].mount_name, 0, 16);
+            memset(disks_mount[i].parts_mount[j].mount_name, 0, 16);
         }
     }
 }

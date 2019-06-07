@@ -15,6 +15,7 @@ void createExtendedPartition (int start)
     ebr.part_status = '0';
 
     updateEBR(ebr, start);
+    printf(ANSI_COLOR_GREEN "[i] Se creó la partición extendida %s\n" ANSI_COLOR_RESET, ebr.ebr_name);
 }
 
 void createLogicalPartition (Partition part, char fit)
@@ -41,6 +42,11 @@ void createLogicalPartition (Partition part, char fit)
     }
 
     if ((spaces[idx].start + values.size + sizeof(EBR)) > (part.part_start + part.part_size))
+    {
+        printf(ANSI_COLOR_RED "[e] No hay espacio en la partición\n" ANSI_COLOR_RESET);
+        return;
+    }
+    if (spaces[idx].start == 0)
     {
         printf(ANSI_COLOR_RED "[e] No hay espacio en la partición\n" ANSI_COLOR_RESET);
         return;
@@ -95,6 +101,7 @@ void createLogicalPartition (Partition part, char fit)
     else
         new_ebr.part_next = spaces[idx].next;
     updateEBR(new_ebr, new_ebr.part_start);
+    printf(ANSI_COLOR_GREEN "[i] Se creó la partición lógica %s\n" ANSI_COLOR_RESET, new_ebr.ebr_name);
 }
 
 void deletePart()
@@ -144,7 +151,7 @@ void createPart()
     {
         if (ext == _ERROR_)
         {
-            printf(ANSI_COLOR_GREEN "[e] No hay partición extendida %s\n" ANSI_COLOR_RESET, values.name);
+            printf(ANSI_COLOR_RED "[e] No hay partición extendida %s\n" ANSI_COLOR_RESET, values.name);
             return;
         }
         else
