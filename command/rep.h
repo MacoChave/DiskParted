@@ -42,7 +42,9 @@ int countLogical ()
     int count = 0;
     for (int i = 0; i < 10; i++)
     {
-        if (spaces[i].space > 0)
+        if (spaces[i].type == 'l')
+            count+= 2;
+        if (spaces[i].type == 'f')
             count++;
     }
     return count;
@@ -53,12 +55,68 @@ void reportDisk (MBR mbr, char path_disk[])
     char dotfile[15] = "disk_report.dot";
     FILE * file;
     file = fopen(dotfile, "w");
+    int no_p = countPrimary(mbr.partitions);
+    int no_l = countLogical();
+    double size = 0;
 
     if (file != NULL)
     {
+        fprintf(file, "digraph {\n");
+        fprintf(file, "\tgraph[pad=\"0.5\", nodesep=\"0.5\", ranksep=\"2\"]\n");
+        fprintf(file, "\tnode [shape = plain]\n");
+        fprintf(file, "\trankdir = LR\n");
+        fprintf(file, "\tDISK [label=<\n");
+        fprintf(file, "\t\t<table border=\"0\" cellborder=\"1\" cellspacing=\"0\">\n");
+        size = (sizeof(MBR) * 100) / mbr.size;
+        fprintf(file, "\t\t\t<tr>\n");
+        fprintf(file, "\t\t\t\t<td rowspan=\"2\">MBR - %.4f %%</td>\n", size);
         
+        for (int i = 0; i < 4; i++)
+        {
+            if (mbr.partitions[i].part_type == 'p')
+            {
+                size = (mbr.partitions[i].part_size * 100) / mbr.size;
+                fprintf(file, "\t\t\t\t<td rowspan=\"2\">%s - %.2f %%</td>\n", mbr.partitions[i].part_name, size);
+            }
+            else if (mbr.partitions[i].part_type == 'e')
+                fprintf(file, "\t\t\t\t<td colspan=\"%d\">Extendida</td>\n", no_l);
+        }
+        fprintf(file, "\t\t\t</tr>\n");
+
+        int idx_ext = getNumberExtendedPart(mbr.partitions);
+        if (idx_ext != _ERROR_)
+        {
+            fprintf(file, "\t\t\t<tr>\n");
+            for (int i = 0; i < 10; i++)
+            {
+                if (spaces[i].type == 'l')
+                {
+                    EBR ebr = getEBR(path_disk, spaces[i].start);
+                    fprintf(file, "\t\t\t\t<td>EBR</td>\n");
+                    size = (spaces[i].space * 100) / mbr.size;
+                    fprintf(file, "\t\t\t\t<td>%s - %.2f %%</td>\n", ebr.ebr_name, size);
+                }
+                else if (spaces[i].type == 'f')
+                {
+                    size = (spaces[i].space * 100) / mbr.size;
+                    fprintf(file, "\t\t\t\t<td>FREE - %.2f %%</td>\n", size);
+                }
+            }
+            fprintf(file, "\t\t\t</tr>\n");
+        }
+        fprintf(file, "\t\t</table>\n");
+        fprintf(file, "\t>]\n");
+        fprintf(file, "}\n");
+
         fclose(file);
     }
+
+    char cmd[300] = {0};
+    strcpy(cmd, "dot -Tjpg ");
+    strcat(cmd, "disk_report.dot");
+    strcat(cmd, " -o ");
+    strcat(cmd, values.path);
+    system(cmd);
 }
 
 void reportMBR (MBR mbr, char path_disk[])
@@ -209,7 +267,6 @@ void reportMBR (MBR mbr, char path_disk[])
     }
 
     char cmd[300] = {0};
-    // sprintf(cmd, "dot -Tpdf %s -o %s", dotfile, values.path);
     strcpy(cmd, "dot -Tpdf ");
     strcat(cmd, dotfile);
     strcat(cmd, " -o ");

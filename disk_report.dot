@@ -1,0 +1,38 @@
+digraph {
+	graph[pad="0.5", nodesep="0.5", ranksep="2"]
+	node [shape = plain]
+	rankdir = LR
+	DISK [label=<
+		<table border="0" cellborder="1" cellspacing="0">
+			<tr>
+				<td rowspan="2">MBR - 0.0000 %</td>
+				<td rowspan="2">Part12 - 9.00 %</td>
+				<td rowspan="2">Part13 - 9.00 %</td>
+				<td rowspan="2">Part14 - 9.00 %</td>
+				<td colspan="20">Extendida</td>
+			</tr>
+			<tr>
+				<td>EBR</td>
+				<td>Part16 - 2.00 %</td>
+				<td>EBR</td>
+				<td>Part17 - 2.00 %</td>
+				<td>EBR</td>
+				<td>Part18 - 2.00 %</td>
+				<td>EBR</td>
+				<td>Part19 - 2.00 %</td>
+				<td>EBR</td>
+				<td>Part20 - 2.00 %</td>
+				<td>EBR</td>
+				<td>Part21 - 2.00 %</td>
+				<td>EBR</td>
+				<td>Part22 - 2.00 %</td>
+				<td>EBR</td>
+				<td>Part23 - 2.00 %</td>
+				<td>EBR</td>
+				<td>Part24 - 2.00 %</td>
+				<td>EBR</td>
+				<td>Part25 - 2.00 %</td>
+			</tr>
+		</table>
+	>]
+}
