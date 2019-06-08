@@ -5,34 +5,34 @@ digraph {
 	DISK [label=<
 		<table border="0" cellborder="1" cellspacing="0">
 			<tr>
-				<td rowspan="2">MBR - 0.0000 %</td>
-				<td rowspan="2">Part12 - 9.00 %</td>
-				<td rowspan="2">Part13 - 9.00 %</td>
-				<td rowspan="2">Part14 - 9.00 %</td>
+				<td rowspan="2">MBR <br/> 0.0000 %</td>
+				<td rowspan="2">Part12 <br/> 9.00 %</td>
+				<td rowspan="2">Part13 <br/> 9.00 %</td>
+				<td rowspan="2">Part14 <br/> 9.00 %</td>
 				<td colspan="20">Extendida</td>
-				<td rowspan="2">Free - 21.00 %</td>
+				<td rowspan="2">Free <br/> 21.00 %</td>
 			</tr>
 			<tr>
 				<td>EBR</td>
-				<td>Part16 - 2.00 %</td>
+				<td>Part16 <br/> 2.00 %</td>
 				<td>EBR</td>
-				<td>Part17 - 2.00 %</td>
+				<td>Part17 <br/> 2.00 %</td>
 				<td>EBR</td>
-				<td>Part18 - 2.00 %</td>
+				<td>Part18 <br/> 2.00 %</td>
 				<td>EBR</td>
-				<td>Part19 - 2.00 %</td>
+				<td>Part19 <br/> 2.00 %</td>
 				<td>EBR</td>
-				<td>Part20 - 2.00 %</td>
+				<td>Part20 <br/> 2.00 %</td>
 				<td>EBR</td>
-				<td>Part21 - 2.00 %</td>
+				<td>Part21 <br/> 2.00 %</td>
 				<td>EBR</td>
-				<td>Part22 - 2.00 %</td>
+				<td>Part22 <br/> 2.00 %</td>
 				<td>EBR</td>
-				<td>Part23 - 2.00 %</td>
+				<td>Part23 <br/> 2.00 %</td>
 				<td>EBR</td>
-				<td>Part24 - 2.00 %</td>
+				<td>Part24 <br/> 2.00 %</td>
 				<td>EBR</td>
-				<td>Part25 - 2.00 %</td>
+				<td>Part25 <br/> 2.00 %</td>
 			</tr>
 		</table>
 	>]

@@ -6,6 +6,51 @@
 
 SpaceDisk spaces[50];
 
+int getDiskById (char id_i)
+{
+    for (int i = 0; i < 10; i++)
+    {
+        if (disks_mount[i].letter == id_i)
+            return i;
+    }
+    return _ERROR_;
+}
+
+int getPartById (int id_a, int i)
+{
+    if (i == _ERROR_) return _ERROR_;
+
+    for (int j = 0; j < 20; j++)
+    {
+        if (disks_mount[i].parts_mount[j].mount_id == id_a)
+            return j;
+    }
+    return _ERROR_;   
+}
+
+
+int getDiskByPath (char path[])
+{
+    for (int i = 0; i < 10; i++)
+    {
+        if (strcmp(disks_mount[i].path, path) == 0)
+            return i;
+    }
+    return _ERROR_;
+}
+
+int getPartByName (char name[], int i)
+{
+    if (i == _ERROR_) return _ERROR_;
+
+    for (int j = 0; j < 20; j++)
+    {
+        if (strcmp(disks_mount[i].parts_mount[j].mount_name, name) == 0)
+            return j;
+    }
+    return _ERROR_;   
+}
+
 void clearSpaceDisk()
 {
     for (int i = 0; i < 50; i++)

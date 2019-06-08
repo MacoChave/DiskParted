@@ -4,28 +4,6 @@
 #include "../var/globals.h"
 #include "../fileManager/mpartition.h"
 
-int getDiskById (char id_i)
-{
-    for (int i = 0; i < 10; i++)
-    {
-        if (disks_mount[i].letter == id_i)
-            return i;
-    }
-    return _ERROR_;
-}
-
-int getPartById (int id_a, int i)
-{
-    if (i == _ERROR_) return _ERROR_;
-
-    for (int j = 0; j < 20; j++)
-    {
-        if (disks_mount[i].parts_mount[j].mount_id == id_a)
-            return j;
-    }
-    return _ERROR_;   
-}
-
 int countPrimary (Partition part[])
 {
     int count = 0;
@@ -70,7 +48,7 @@ void reportDisk (MBR mbr, char path_disk[])
         fprintf(file, "\t\t<table border=\"0\" cellborder=\"1\" cellspacing=\"0\">\n");
         size = (sizeof(MBR) * 100) / mbr.size;
         fprintf(file, "\t\t\t<tr>\n");
-        fprintf(file, "\t\t\t\t<td rowspan=\"2\">MBR - %.4f %%</td>\n", size);
+        fprintf(file, "\t\t\t\t<td rowspan=\"2\">MBR <br/> %.4f %%</td>\n", size);
         
         for (int i = 0; i < 4; i++)
         {
@@ -87,13 +65,13 @@ void reportDisk (MBR mbr, char path_disk[])
                     pivot = mbr.size;
                     i = 4;
                 }
-                fprintf(file, "\t\t\t\t<td rowspan=\"2\">Free - %.2f %%</td>\n", size);
+                fprintf(file, "\t\t\t\t<td rowspan=\"2\">Free <br/> %.2f %%</td>\n", size);
             }
             if (mbr.partitions[i].part_type == 'p')
             {
                 pivot = mbr.partitions[i].part_start + mbr.partitions[i].part_size;
                 size = (mbr.partitions[i].part_size * 100) / mbr.size;
-                fprintf(file, "\t\t\t\t<td rowspan=\"2\">%s - %.2f %%</td>\n", mbr.partitions[i].part_name, size);
+                fprintf(file, "\t\t\t\t<td rowspan=\"2\">%s <br/> %.2f %%</td>\n", mbr.partitions[i].part_name, size);
             }
             else if (mbr.partitions[i].part_type == 'e')
             {
@@ -104,7 +82,7 @@ void reportDisk (MBR mbr, char path_disk[])
         if (pivot < mbr.size)
         {
             size = (mbr.size - pivot * 100) / mbr.size;
-            fprintf(file, "\t\t\t\t<td rowspan=\"2\">Free - %.2f %%</td>\n", size);
+            fprintf(file, "\t\t\t\t<td rowspan=\"2\">Free <br/> %.2f %%</td>\n", size);
         }
         fprintf(file, "\t\t\t</tr>\n");
 
@@ -119,12 +97,12 @@ void reportDisk (MBR mbr, char path_disk[])
                     EBR ebr = getEBR(path_disk, spaces[i].start);
                     fprintf(file, "\t\t\t\t<td>EBR</td>\n");
                     size = (spaces[i].space * 100) / mbr.size;
-                    fprintf(file, "\t\t\t\t<td>%s - %.2f %%</td>\n", ebr.ebr_name, size);
+                    fprintf(file, "\t\t\t\t<td>%s <br/> %.2f %%</td>\n", ebr.ebr_name, size);
                 }
                 else if (spaces[i].type == 'f')
                 {
                     size = (spaces[i].space * 100) / mbr.size;
-                    fprintf(file, "\t\t\t\t<td>Free - %.2f %%</td>\n", size);
+                    fprintf(file, "\t\t\t\t<td>Free <br/> %.2f %%</td>\n", size);
                 }
             }
             fprintf(file, "\t\t\t</tr>\n");
@@ -335,6 +313,8 @@ void exec_rep ()
         reportDisk(mbr, disks_mount[i].path);
     else if (strcmp(values.name, "mbr") == 0)
         reportMBR(mbr, disks_mount[i].path);
+    
+    clearSpaceDisk();
 }
 
 #endif

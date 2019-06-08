@@ -104,14 +104,211 @@ void createLogicalPartition (Partition part, char fit)
     printf(ANSI_COLOR_GREEN "[i] Se creó la partición lógica %s\n" ANSI_COLOR_RESET, new_ebr.ebr_name);
 }
 
-void deletePart()
-{
-
-}
-
 void modifyPart()
 {
+    clearSpaceDisk();
+    int i = getDiskByPath(values.path);
+    int j = getPartByName(values.name, i);
 
+    if (j != _ERROR_)
+    {
+        printf(ANSI_COLOR_RED "[e] La partición %s se encuentra montada\n" ANSI_COLOR_RESET, values.id);
+        return;
+    }
+
+    MBR mbr = getMBR(values.path);
+
+    for (int i = 0; i < 4; i++)
+    {
+        if (mbr.partitions[i].part_size > 0)
+        {
+            if (strcmp(mbr.partitions[i].part_name, values.name) == 0)
+            {
+                int pto = mbr.partitions[i].part_start + mbr.partitions[i].part_size + values.add;
+                if (pto > mbr.partitions[i].part_start)
+                {
+                    if (i < 3)
+                    {
+                        if (mbr.partitions[i + 1].part_start > 0)
+                        {
+                            if (pto > mbr.partitions[i + 1].part_start)
+                            {
+                                printf(ANSI_COLOR_RED "[e] No hay espacio suficiente para partición %s\n" ANSI_COLOR_RESET, values.name);
+                                return;
+                            }
+                        }
+                        else
+                        {
+                            if (pto > mbr.size)
+                            {
+                                printf(ANSI_COLOR_RED "[e] No hay espacio suficiente para partición %s\n" ANSI_COLOR_RESET, values.name);
+                                return;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (pto > mbr.size)
+                        {
+                            printf(ANSI_COLOR_RED "[e] No hay espacio suficiente para partición %s\n" ANSI_COLOR_RESET, values.name);
+                            return;
+                        }
+                    }
+
+                    mbr.partitions[i].part_size += values.add;
+                    updateMBR(values.path, mbr);
+                    printf(ANSI_COLOR_GREEN "[i] Se ha agregado %d a la partición %s\n" ANSI_COLOR_RESET, values.add, values.name);
+                    return;
+                }
+                else
+                {
+                    printf(ANSI_COLOR_RED "[e] No quedará espacio en partición %s\n" ANSI_COLOR_RESET, values.name);
+                    return;
+                }
+            }
+        }
+    }
+    
+    int ext = getNumberExtendedPart(mbr.partitions);
+    EBR ebr = getEBR(values.path, mbr.partitions[ext].part_start);
+    getSpaceLogicalDetail(values.path, ebr, mbr.partitions[ext].part_start + mbr.partitions[ext].part_size);
+
+    for (int i = 0; i < 50; i++)
+    {
+        if (spaces[i].type == 'l')
+        {
+            ebr = getEBR(values.path, spaces[i].start);
+            if (strcmp(ebr.ebr_name, values.name) == 0)
+            {
+                int pto = ebr.part_start + ebr.part_size + values.add;
+                if (pto < spaces[i].start + sizeof(EBR))
+                {
+                    printf(ANSI_COLOR_RED "[e] No quedará espacio en partición %s\n" ANSI_COLOR_RESET, values.name);
+                    return;
+                }
+                else
+                {
+                    EBR next = getEBR(values.path, spaces[i].next);
+                    if (next.part_size > 0)
+                    {
+                        if (pto > ebr.part_start)
+                        {
+                            printf(ANSI_COLOR_RED "[e] No hay espacio suficiente para partición %s\n" ANSI_COLOR_RESET, values.name);
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        if (pto > (mbr.partitions[ext].part_start + mbr.partitions[ext].part_size))
+                        {
+                            printf(ANSI_COLOR_RED "[e] No hay espacio suficiente para partición %s\n" ANSI_COLOR_RESET, values.name);
+                            return;
+                        }
+                        next.part_start = pto;
+                        ebr.part_next = pto;
+                        updateEBR(values.path, next, next.part_start);
+                    }
+
+                    ebr.part_size += values.add;
+                    updateEBR(values.path, ebr, ebr.part_start);
+                    printf(ANSI_COLOR_GREEN "[i] Se ha agregado %d a la partición %s\n" ANSI_COLOR_RESET, values.add, values.name);
+                    return;
+                }
+            }
+        }
+    }
+}
+
+void deletePart()
+{
+    clearSpaceDisk();
+    int i = getDiskByPath(values.path);
+    int j = getPartByName(values.name, i);
+
+    if (j != _ERROR_)
+    {
+        printf(ANSI_COLOR_RED "[e] La partición %s se encuentra montada\n" ANSI_COLOR_RESET, values.id);
+        return;
+    }
+
+    MBR mbr = getMBR(values.path);
+
+    for (int i = 0; i < 4; i++)
+    {
+        if (mbr.partitions[i].part_size > 0)
+        {
+            if (strcmp(mbr.partitions[i].part_name, values.name) == 0)
+            {
+                printf(ANSI_COLOR_YELLOW "[w] ¿Desea eliminar la partición %s? y/n\n" ANSI_COLOR_RESET, values.name);
+                char conf[999] = {0};
+                fgets(conf, 999, stdin);
+                if (conf[0] == 'y' || conf[0] == 'Y')
+                {
+                    if (strcmp(values.del, "full") == 0)
+                        clearPartDisk(values.path, mbr.partitions[i].part_start, mbr.partitions[i].part_size);
+
+                    mbr.partitions[i].part_status = '0';
+                    mbr.partitions[i].part_type = '0';
+                    mbr.partitions[i].part_fit = '0';
+                    mbr.partitions[i].part_start = 0;
+                    mbr.partitions[i].part_size = 0;
+                    memset(mbr.partitions[i].part_name, 0, 16);
+                    mbr = sortMBR(mbr);
+                    updateMBR(values.path, mbr);
+                    printf(ANSI_COLOR_GREEN "[i] Partición %s eliminada\n" ANSI_COLOR_RESET, values.name);
+                }
+                return;
+            }
+        }
+    }
+    
+    int ext = getNumberExtendedPart(mbr.partitions);
+    EBR ebr = getEBR(values.path, mbr.partitions[ext].part_start);
+    getSpaceLogicalDetail(values.path, ebr, mbr.partitions[ext].part_start + mbr.partitions[ext].part_size);
+
+    for (int i = 0; i < 50; i++)
+    {
+        if (spaces[i].type == 'l')
+        {
+            ebr = getEBR(values.path, spaces[i].start);
+            if (strcmp(ebr.ebr_name, values.name) == 0)
+            {
+                printf(ANSI_COLOR_YELLOW "[w] ¿Desea eliminar la partición %s? y/n\n" ANSI_COLOR_RESET, values.name);
+                char conf[999] = {0};
+                fgets(conf, 999, stdin);
+                if (conf[0] == 'y' || conf[0] == 'Y')
+                {
+                    if (spaces[i].prev > 0)
+                    {
+                        EBR prev = getEBR(values.path, spaces[i].prev);
+                        EBR next = getEBR(values.path, spaces[i].next);
+                        if (next.part_size > 0)
+                            prev.part_next = next.part_start;
+                        else
+                            next.part_start = ebr.part_start;
+                        
+                        updateEBR(values.path, prev, prev.part_start);
+                        clearPartDisk(values.path, ebr.part_start, ebr.part_size + sizeof(EBR));
+                        updateEBR(values.path, next, next.part_start);
+                    }
+                    else {
+                        EBR next = getEBR(values.path, spaces[i].next);
+                        if (next.part_size > 0)
+                        {
+                            ebr.part_size = 0;
+                            memset(ebr.ebr_name, 0, 16);
+                        }
+                        else
+                            next.part_start = ebr.part_start;
+                        
+                        updateEBR(values.path, ebr, ebr.part_start);
+                        updateEBR(values.path, next, next.part_start);
+                    }
+                }
+                return;
+            }
+        }
+    }
 }
 
 void createPart()
@@ -191,9 +388,10 @@ void createPart()
             if (values.type == 'e')
                 createExtendedPartition(part.part_start);
             printf(ANSI_COLOR_GREEN "[i] Partición %s : %d creada en disco %s\n" ANSI_COLOR_RESET, part.part_name, part.part_size, values.path);
-            break;
+            return;
         }
-    }    
+    }
+    printf(ANSI_COLOR_RED "[e] No hay espacio en tabla de particiones\n" ANSI_COLOR_RESET);
 }
 
 void exec_fdisk()
@@ -227,9 +425,11 @@ void exec_fdisk()
         values.add *= 1024;
     }
 
-    if (strlen(values.del) < 0) deletePart();
+    if (strcmp(values.del, "full") == 0 || strcmp(values.del, "fast") == 0) deletePart();
     else if (values.add != 0) modifyPart();
     else createPart();
+
+    clearSpaceDisk();
 }
 
 #endif

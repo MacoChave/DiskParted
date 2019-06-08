@@ -68,6 +68,28 @@ int createDisk(char path[])
     return 0;
 }
 
+int clearPartDisk(char path[], int start, int size)
+{
+    FILE * file;
+    file = fopen(path, "rb+");
+
+    if (file != NULL)
+    {
+        char buffer[1024];
+        memset(buffer, 0, 1024);
+
+        for (int i = 0; i < size / 1024; i++)
+        {
+            fwrite(buffer, sizeof(buffer), 1, file);
+            fflush(file);
+        }
+        fclose(file);
+        return 1;
+    }
+
+    return 0;
+}
+
 int removeDisk(char path[])
 {
     return (remove(path) == 0) ? 1 : 0;
