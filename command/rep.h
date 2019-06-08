@@ -58,6 +58,7 @@ void reportDisk (MBR mbr, char path_disk[])
     int no_p = countPrimary(mbr.partitions);
     int no_l = countLogical();
     double size = 0;
+    int pivot = sizeof(MBR);
 
     if (file != NULL)
     {
@@ -73,13 +74,37 @@ void reportDisk (MBR mbr, char path_disk[])
         
         for (int i = 0; i < 4; i++)
         {
+            if (pivot != mbr.partitions[i].part_start)
+            {
+                if (mbr.partitions[i].part_size > 0)
+                {
+                    size = (mbr.partitions[i].part_start - pivot * 100) / mbr.size;
+                    pivot = mbr.partitions[i].part_start;
+                }
+                else
+                {
+                    size = (mbr.size - pivot * 100) / mbr.size;
+                    pivot = mbr.size;
+                    i = 4;
+                }
+                fprintf(file, "\t\t\t\t<td rowspan=\"2\">Free - %.2f %%</td>\n", size);
+            }
             if (mbr.partitions[i].part_type == 'p')
             {
+                pivot = mbr.partitions[i].part_start + mbr.partitions[i].part_size;
                 size = (mbr.partitions[i].part_size * 100) / mbr.size;
                 fprintf(file, "\t\t\t\t<td rowspan=\"2\">%s - %.2f %%</td>\n", mbr.partitions[i].part_name, size);
             }
             else if (mbr.partitions[i].part_type == 'e')
+            {
+                pivot = mbr.partitions[i].part_start + mbr.partitions[i].part_size;
                 fprintf(file, "\t\t\t\t<td colspan=\"%d\">Extendida</td>\n", no_l);
+            }
+        }
+        if (pivot < mbr.size)
+        {
+            size = (mbr.size - pivot * 100) / mbr.size;
+            fprintf(file, "\t\t\t\t<td rowspan=\"2\">Free - %.2f %%</td>\n", size);
         }
         fprintf(file, "\t\t\t</tr>\n");
 
@@ -99,7 +124,7 @@ void reportDisk (MBR mbr, char path_disk[])
                 else if (spaces[i].type == 'f')
                 {
                     size = (spaces[i].space * 100) / mbr.size;
-                    fprintf(file, "\t\t\t\t<td>FREE - %.2f %%</td>\n", size);
+                    fprintf(file, "\t\t\t\t<td>Free - %.2f %%</td>\n", size);
                 }
             }
             fprintf(file, "\t\t\t</tr>\n");
