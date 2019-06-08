@@ -27,7 +27,7 @@ void createLogicalPartition (Partition part, char fit)
         printf(ANSI_COLOR_RED "[e] Se ha perdido el ebr de la partición lógica\n" ANSI_COLOR_RESET);
         return;
     }
-    getSpaceLogicalDetail(ebr, part.part_start + part.part_size);
+    getSpaceLogicalDetail(values.path, ebr, part.part_start + part.part_size);
     if (fit == 'f')
         idx = getFirstAdjustPart();
     else if (fit == 'b')

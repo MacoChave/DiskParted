@@ -63,7 +63,7 @@ void mounting(MBR mbr)
         i = getNumberExtendedPart(mbr.partitions);
         EBR ebr = getEBR(values.path, mbr.partitions[i].part_start);
         clearSpaceDisk();
-        getSpaceLogicalDetail(ebr, mbr.partitions[i].part_start + mbr.partitions[i].part_size);
+        getSpaceLogicalDetail(values.path, ebr, mbr.partitions[i].part_start + mbr.partitions[i].part_size);
         for (int i = 0; i < 50; i++)
         {
             if (spaces[i].type == 'l')
