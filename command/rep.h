@@ -72,7 +72,7 @@ void reportMBR (MBR mbr, char path_disk[])
         fprintf(file, "digraph {\n");
         fprintf(file, "\tgraph[pad=\"0.5\", nodesep=\"0.5\", ranksep=\"2\"]\n");
         fprintf(file, "\tnode [shape = plain]\n");
-        fprintf(file, "\trankdir = TD\n");
+        fprintf(file, "\trankdir = LR\n");
         fprintf(file, "\tMBR [label=<\n");
         fprintf(file, "\t\t<table border=\"0\" cellborder=\"1\" cellspacing=\"0\">\n");
         
@@ -114,32 +114,32 @@ void reportMBR (MBR mbr, char path_disk[])
                 fprintf(file, "\t\t\t</tr>\n");
 
                 fprintf(file, "\t\t\t<tr>\n");
-                fprintf(file, "\t\t\t\t<td>part_status%d</td>\n", i);
+                fprintf(file, "\t\t\t\t<td>Part status</td>\n");
                 fprintf(file, "\t\t\t\t<td>%c</td>\n", mbr.partitions[i].part_status);
                 fprintf(file, "\t\t\t</tr>\n");
 
                 fprintf(file, "\t\t\t<tr>\n");
-                fprintf(file, "\t\t\t\t<td>part_type_%d</td>\n", i);
+                fprintf(file, "\t\t\t\t<td>Part type</td>\n");
                 fprintf(file, "\t\t\t\t<td>%c</td>\n", mbr.partitions[i].part_type);
                 fprintf(file, "\t\t\t</tr>\n");
 
                 fprintf(file, "\t\t\t<tr>\n");
-                fprintf(file, "\t\t\t\t<td>part_fit_%d</td>\n", i);
+                fprintf(file, "\t\t\t\t<td>Part fit</td>\n");
                 fprintf(file, "\t\t\t\t<td>%c</td>\n", mbr.partitions[i].part_fit);
                 fprintf(file, "\t\t\t</tr>\n");
 
                 fprintf(file, "\t\t\t<tr>\n");
-                fprintf(file, "\t\t\t\t<td>part_start_%d</td>\n", i);
+                fprintf(file, "\t\t\t\t<td>Part start</td>\n");
                 fprintf(file, "\t\t\t\t<td>%d</td>\n", mbr.partitions[i].part_start);
                 fprintf(file, "\t\t\t</tr>\n");
 
                 fprintf(file, "\t\t\t<tr>\n");
-                fprintf(file, "\t\t\t\t<td>part_size_%d</td>\n", i);
+                fprintf(file, "\t\t\t\t<td>Part size</td>\n");
                 fprintf(file, "\t\t\t\t<td>%d</td>\n", mbr.partitions[i].part_size);
                 fprintf(file, "\t\t\t</tr>\n");
 
                 fprintf(file, "\t\t\t<tr>\n");
-                fprintf(file, "\t\t\t\t<td>part_name_%d</td>\n", i);
+                fprintf(file, "\t\t\t\t<td>Part name</td>\n");
                 fprintf(file, "\t\t\t\t<td>%s</td>\n", mbr.partitions[i].part_name);
                 fprintf(file, "\t\t\t</tr>\n");
             }
@@ -160,7 +160,7 @@ void reportMBR (MBR mbr, char path_disk[])
                 fprintf(file, "\t\t<table border=\"0\" cellborder=\"1\" cellspacing=\"0\">\n");
             
                 fprintf(file, "\t\t\t<tr>\n");
-                fprintf(file, "\t\t\t\t<td colspan=\"2\">EBR %d Report</td>\n", ebr_index);
+                fprintf(file, "\t\t\t\t<td colspan=\"2\">Reporte EBR %d</td>\n", ebr_index);
                 fprintf(file, "\t\t\t</tr>\n");
 
                 fprintf(file, "\t\t\t<tr>\n");
@@ -169,32 +169,32 @@ void reportMBR (MBR mbr, char path_disk[])
                 fprintf(file, "\t\t\t</tr>\n");
                 
                 fprintf(file, "\t\t\t<tr>\n");
-                fprintf(file, "\t\t\t\t<td>part_status</td>\n");
+                fprintf(file, "\t\t\t\t<td>Part status</td>\n");
                 fprintf(file, "\t\t\t\t<td>%c</td>\n", ebr.part_status);
                 fprintf(file, "\t\t\t</tr>\n");
                 
                 fprintf(file, "\t\t\t<tr>\n");
-                fprintf(file, "\t\t\t\t<td>part_fit</td>\n");
+                fprintf(file, "\t\t\t\t<td>Part fit</td>\n");
                 fprintf(file, "\t\t\t\t<td>%c</td>\n", ebr.part_fit);
                 fprintf(file, "\t\t\t</tr>\n");
                 
                 fprintf(file, "\t\t\t<tr>\n");
-                fprintf(file, "\t\t\t\t<td>part_start</td>\n");
+                fprintf(file, "\t\t\t\t<td>Part start</td>\n");
                 fprintf(file, "\t\t\t\t<td>%d</td>\n", ebr.part_start);
                 fprintf(file, "\t\t\t</tr>\n");
 
                 fprintf(file, "\t\t\t<tr>\n");
-                fprintf(file, "\t\t\t\t<td>part_size</td>\n");
+                fprintf(file, "\t\t\t\t<td>Part size</td>\n");
                 fprintf(file, "\t\t\t\t<td>%d</td>\n", ebr.part_size);
                 fprintf(file, "\t\t\t</tr>\n");
 
                 fprintf(file, "\t\t\t<tr>\n");
-                fprintf(file, "\t\t\t\t<td>part_next</td>\n");
+                fprintf(file, "\t\t\t\t<td>Part next</td>\n");
                 fprintf(file, "\t\t\t\t<td>%d</td>\n", ebr.part_next);
                 fprintf(file, "\t\t\t</tr>\n");
 
                 fprintf(file, "\t\t\t<tr>\n");
-                fprintf(file, "\t\t\t\t<td>part_name</td>\n");
+                fprintf(file, "\t\t\t\t<td>Part name</td>\n");
                 fprintf(file, "\t\t\t\t<td>%s</td>\n", ebr.ebr_name);
                 fprintf(file, "\t\t\t</tr>\n");
             
