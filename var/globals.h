@@ -33,7 +33,7 @@
 #define _COMMAND_ 0
 #define _PARAM_ 1
 #define _VALUE_ 2
-#define _ERROR_ 9
+#define _ERROR_ -1
 
 #define ANSI_COLOR_RED     "\x1b[31m"
 #define ANSI_COLOR_GREEN   "\x1b[32m"

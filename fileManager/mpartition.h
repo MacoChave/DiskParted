@@ -182,7 +182,7 @@ MBR sortMBR (MBR mbr)
     {
         for (int j = 0; j < 3; j++)
         {
-            if ((mbr.partitions[j].part_start > mbr.partitions[j + 1].part_start) && mbr.partitions[j + 1].part_start != 0)
+            if (((mbr.partitions[j].part_start > mbr.partitions[j + 1].part_start) && mbr.partitions[j + 1].part_start != 0) || mbr.partitions[j].part_start == 0)
             {
                 Partition p = mbr.partitions[j];
                 mbr.partitions[j] = mbr.partitions[j + 1];

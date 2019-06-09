@@ -304,6 +304,8 @@ void deletePart()
                         updateEBR(values.path, ebr, ebr.part_start);
                         updateEBR(values.path, next, next.part_start);
                     }
+
+                    printf(ANSI_COLOR_GREEN "[i] Partición %s eliminada\n" ANSI_COLOR_RESET, values.name);
                 }
                 return;
             }

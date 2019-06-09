@@ -5,6 +5,17 @@
 #include "../fileManager/manager.h"
 #include "../fileManager/mpartition.h"
 
+void clearDiskMounted (int i)
+{
+    for (int j = 0; j < 20; j++)
+    {
+        if (disks_mount[i].parts_mount[j].mount_id != 0)
+            return;
+    }
+    disks_mount[i].letter = '0';
+    memset(disks_mount[i].path, 0, 300);
+}
+
 void exec_unmount()
 {
     if (strlen(values.id) < 0)
@@ -25,15 +36,14 @@ void exec_unmount()
         return;
     }
 
-    disks_mount[i].letter = '0';
-    memset(disks_mount[i].path, 0, 300);
     disks_mount[i].parts_mount[j].mount_type = '0';
     disks_mount[i].parts_mount[j].mount_start = 0;
     disks_mount[i].parts_mount[j].mount_size = 0;
     disks_mount[i].parts_mount[j].mount_id = 0;
     memset(disks_mount[i].parts_mount[j].mount_name, 0, 15);
+    clearDiskMounted(i);
 
-    printf("[i] Partición %s desmontada\n", values.id);
+    printf(ANSI_COLOR_GREEN "[i] Partición %s desmontada\n" ANSI_COLOR_RESET, values.id);
 }
 
 #endif
