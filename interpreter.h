@@ -8,6 +8,7 @@
 #include "command/rmdisk.h"
 #include "command/fdisk.h"
 #include "command/mount.h"
+#include "command/unmount.h"
 #include "command/rep.h"
 
 extern void exec_exec();
@@ -230,6 +231,7 @@ int loadCommand(char input[])
                 exec_mount();
                 break;
             case _UNMOUNT_:
+                exec_unmount();
                 break;
             case _REP_:
                 exec_rep();
