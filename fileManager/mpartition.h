@@ -28,7 +28,6 @@ int getPartById (int id_a, int i)
     return _ERROR_;   
 }
 
-
 int getDiskByPath (char path[])
 {
     for (int i = 0; i < 10; i++)
@@ -204,7 +203,7 @@ void getSpaceLogicalDetail (char path[], EBR ebr, int end)
         if (ebr.part_size == 0)
         {
             space.start = pivot;
-            space.space = end - pivot - sizeof(EBR);
+            space.space = end - pivot;
             space.type = 'f';
             space.prev = prev;
             space.next = ebr.part_next;
@@ -214,7 +213,7 @@ void getSpaceLogicalDetail (char path[], EBR ebr, int end)
         else if (pivot != ebr.part_start)
         {
             space.start = pivot;
-            space.space = ebr.part_start - pivot - sizeof(EBR);
+            space.space = ebr.part_start - pivot;
             space.type = 'f';
             space.prev = prev;
             space.next = ebr.part_start;
@@ -230,7 +229,7 @@ void getSpaceLogicalDetail (char path[], EBR ebr, int end)
             space.prev = prev;
             space.next = ebr.part_next;
             spaces[s] = space;
-            pivot += ebr.part_size + sizeof(EBR);
+            pivot += ebr.part_size;
             prev = ebr.part_start;
             s++;
             if (ebr.part_next > 0)

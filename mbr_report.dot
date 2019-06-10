@@ -17,7 +17,7 @@ digraph {
 			</tr>
 			<tr>
 				<td>MBR Fecha de Creación</td>
-				<td>09/06/19 21:21</td>
+				<td>10/06/19 13:52</td>
 			</tr>
 			<tr>
 				<td>MBR Disk Signature</td>
@@ -137,7 +137,7 @@ digraph {
 			</tr>
 			<tr>
 				<td>Part next</td>
-				<td>15605932</td>
+				<td>15605900</td>
 			</tr>
 			<tr>
 				<td>Part name</td>
@@ -164,7 +164,7 @@ digraph {
 			</tr>
 			<tr>
 				<td>Part start</td>
-				<td>15605932</td>
+				<td>15605900</td>
 			</tr>
 			<tr>
 				<td>Part size</td>
@@ -172,7 +172,7 @@ digraph {
 			</tr>
 			<tr>
 				<td>Part next</td>
-				<td>16834764</td>
+				<td>16834700</td>
 			</tr>
 			<tr>
 				<td>Part name</td>
@@ -199,7 +199,7 @@ digraph {
 			</tr>
 			<tr>
 				<td>Part start</td>
-				<td>16834764</td>
+				<td>16834700</td>
 			</tr>
 			<tr>
 				<td>Part size</td>
@@ -207,7 +207,7 @@ digraph {
 			</tr>
 			<tr>
 				<td>Part next</td>
-				<td>18063596</td>
+				<td>18063500</td>
 			</tr>
 			<tr>
 				<td>Part name</td>
@@ -234,7 +234,7 @@ digraph {
 			</tr>
 			<tr>
 				<td>Part start</td>
-				<td>18063596</td>
+				<td>18063500</td>
 			</tr>
 			<tr>
 				<td>Part size</td>
@@ -242,7 +242,7 @@ digraph {
 			</tr>
 			<tr>
 				<td>Part next</td>
-				<td>19292428</td>
+				<td>19292300</td>
 			</tr>
 			<tr>
 				<td>Part name</td>
@@ -269,7 +269,7 @@ digraph {
 			</tr>
 			<tr>
 				<td>Part start</td>
-				<td>19292428</td>
+				<td>19292300</td>
 			</tr>
 			<tr>
 				<td>Part size</td>
@@ -277,7 +277,7 @@ digraph {
 			</tr>
 			<tr>
 				<td>Part next</td>
-				<td>20521260</td>
+				<td>20521100</td>
 			</tr>
 			<tr>
 				<td>Part name</td>
@@ -304,7 +304,7 @@ digraph {
 			</tr>
 			<tr>
 				<td>Part start</td>
-				<td>20521260</td>
+				<td>20521100</td>
 			</tr>
 			<tr>
 				<td>Part size</td>
@@ -312,7 +312,7 @@ digraph {
 			</tr>
 			<tr>
 				<td>Part next</td>
-				<td>21750092</td>
+				<td>21749900</td>
 			</tr>
 			<tr>
 				<td>Part name</td>
@@ -339,7 +339,7 @@ digraph {
 			</tr>
 			<tr>
 				<td>Part start</td>
-				<td>21750092</td>
+				<td>21749900</td>
 			</tr>
 			<tr>
 				<td>Part size</td>
@@ -347,7 +347,7 @@ digraph {
 			</tr>
 			<tr>
 				<td>Part next</td>
-				<td>22978924</td>
+				<td>22978700</td>
 			</tr>
 			<tr>
 				<td>Part name</td>
@@ -374,7 +374,7 @@ digraph {
 			</tr>
 			<tr>
 				<td>Part start</td>
-				<td>22978924</td>
+				<td>22978700</td>
 			</tr>
 			<tr>
 				<td>Part size</td>
@@ -382,7 +382,7 @@ digraph {
 			</tr>
 			<tr>
 				<td>Part next</td>
-				<td>24207756</td>
+				<td>24207500</td>
 			</tr>
 			<tr>
 				<td>Part name</td>
@@ -409,7 +409,7 @@ digraph {
 			</tr>
 			<tr>
 				<td>Part start</td>
-				<td>24207756</td>
+				<td>24207500</td>
 			</tr>
 			<tr>
 				<td>Part size</td>
@@ -417,7 +417,7 @@ digraph {
 			</tr>
 			<tr>
 				<td>Part next</td>
-				<td>25436588</td>
+				<td>25436300</td>
 			</tr>
 			<tr>
 				<td>Part name</td>
@@ -444,7 +444,7 @@ digraph {
 			</tr>
 			<tr>
 				<td>Part start</td>
-				<td>25436588</td>
+				<td>25436300</td>
 			</tr>
 			<tr>
 				<td>Part size</td>
@@ -452,7 +452,7 @@ digraph {
 			</tr>
 			<tr>
 				<td>Part next</td>
-				<td>26665420</td>
+				<td>26665100</td>
 			</tr>
 			<tr>
 				<td>Part name</td>

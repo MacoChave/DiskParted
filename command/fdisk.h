@@ -41,7 +41,7 @@ void createLogicalPartition (Partition part, char fit)
         idx = getFirstAdjustPart();
     }
 
-    if ((spaces[idx].start + values.size + sizeof(EBR)) > (part.part_start + part.part_size))
+    if ((spaces[idx].start + values.size) > (part.part_start + part.part_size))
     {
         printf(ANSI_COLOR_RED "[e] No hay espacio en la partición\n" ANSI_COLOR_RESET);
         return;
@@ -94,7 +94,7 @@ void createLogicalPartition (Partition part, char fit)
 
     if (spaces[idx].next < 0)
     {
-        new_blank.part_start = spaces[idx].start + values.size + sizeof(EBR);
+        new_blank.part_start = spaces[idx].start + values.size;
         new_ebr.part_next = new_blank.part_start;
         updateEBR(values.path, new_blank, new_blank.part_start);
     }
@@ -183,7 +183,7 @@ void modifyPart()
                 int pto = ebr.part_start + ebr.part_size + values.add;
                 if (pto < spaces[i].start + sizeof(EBR))
                 {
-                    printf(ANSI_COLOR_RED "[e] No quedará espacio en partición %s\n" ANSI_COLOR_RESET, values.name);
+                    printf(ANSI_COLOR_RED "[e] No se puede reducir la partición %s\n" ANSI_COLOR_RESET, values.name);
                     return;
                 }
                 else
@@ -193,7 +193,7 @@ void modifyPart()
                     {
                         if (pto > ebr.part_start)
                         {
-                            printf(ANSI_COLOR_RED "[e] No hay espacio suficiente para partición %s\n" ANSI_COLOR_RESET, values.name);
+                            printf(ANSI_COLOR_RED "[e] Espacio insuficiente para partición %s\n" ANSI_COLOR_RESET, values.name);
                             return;
                         }
                     }
@@ -201,7 +201,7 @@ void modifyPart()
                     {
                         if (pto > (mbr.partitions[ext].part_start + mbr.partitions[ext].part_size))
                         {
-                            printf(ANSI_COLOR_RED "[e] No hay espacio suficiente para partición %s\n" ANSI_COLOR_RESET, values.name);
+                            printf(ANSI_COLOR_RED "[e] Espacio insuficiente para partición %s\n" ANSI_COLOR_RESET, values.name);
                             return;
                         }
                         next.part_start = pto;
@@ -291,7 +291,7 @@ void deletePart()
                         
                         updateEBR(values.path, prev, prev.part_start);
                         if (strcmp(values.del, "full") == 0)
-                            clearPartDisk(values.path, ebr.part_start, ebr.part_size + sizeof(EBR));
+                            clearPartDisk(values.path, ebr.part_start, ebr.part_size);
                         updateEBR(values.path, next, next.part_start);
                     }
                     else {
@@ -354,7 +354,7 @@ void createPart()
     {
         if (ext == _ERROR_)
         {
-            printf(ANSI_COLOR_RED "[e] No hay partición extendida %s\n" ANSI_COLOR_RESET, values.name);
+            printf(ANSI_COLOR_RED "[e] No hay partición extendida para partición lógica %s\n" ANSI_COLOR_RESET, values.name);
             return;
         }
         else

@@ -68,7 +68,6 @@ void reportDisk (MBR mbr, char path_disk[])
                 {
                     dividend = mbr.size - pivot;
                     percent = dividend / divider;
-                    pivot = mbr.size;
                     break;
                 }
                 fprintf(file, "\t\t\t\t<td rowspan=\"2\">Free<br/>%.2f %% de Disco</td>\n", percent * 100);

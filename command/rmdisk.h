@@ -3,6 +3,7 @@
 
 #include "../var/globals.h"
 #include "../fileManager/manager.h"
+#include "../fileManager/mpartition.h"
 
 void exec_rmdisk()
 {
