@@ -18,6 +18,13 @@ void exec_rmdisk()
         return;
     }
 
+    int i = getDiskByPath(values.path);
+    if (i != _ERROR_)
+    {
+        clearAllPartMounted(i);
+        clearDiskMounted(i);
+    }
+
     printf(ANSI_COLOR_YELLOW "[w] ¿Desea eliminar el disco %s? y/n\n" ANSI_COLOR_RESET, values.path);
     char conf[999] = {0};
     fgets(conf, 999, stdin);
