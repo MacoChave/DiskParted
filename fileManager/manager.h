@@ -35,6 +35,7 @@ int existDisk(char path[])
 {
     FILE * file;
     file = fopen(path, "r");
+    rewind(file);
     
     if (file != NULL)
     {
@@ -49,6 +50,7 @@ int createDisk(char path[])
 {
     FILE * file;
     file = fopen(path, "wb");
+    rewind(file);
     
     if (file != NULL)
     {
@@ -72,6 +74,7 @@ int clearPartDisk(char path[], int start, int size)
 {
     FILE * file;
     file = fopen(path, "rb+");
+    rewind(file);
 
     if (file != NULL)
     {
@@ -99,6 +102,7 @@ int updateMBR(char path[], MBR mbr)
 {
     FILE * file;
     file = fopen(path, "rb+");
+    rewind(file);
     
     if (file != NULL)
     {
@@ -117,6 +121,7 @@ MBR getMBR(char path[])
     mbr.size = 0;
     FILE * file;
     file = fopen(path, "rb");
+    rewind(file);
 
     if (file != NULL)
     {
@@ -132,6 +137,7 @@ int updateEBR(char path[], EBR ebr, int start)
 {
     FILE * file;
     file = fopen(path, "rb+");
+    rewind(file);
 
     if (file != NULL)
     {
@@ -151,6 +157,7 @@ EBR getEBR (char path[], int start)
     ebr.part_size = -1;
     FILE * file;
     file = fopen(path, "rb");
+    rewind(file);
 
     if (file != NULL)
     {

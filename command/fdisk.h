@@ -112,8 +112,8 @@ void modifyPart()
 
     if (j != _ERROR_)
     {
-        printf(ANSI_COLOR_RED "[e] La partición %s se encuentra montada\n" ANSI_COLOR_RESET, values.id);
-        return;
+        clearPartMounted(i, j);
+        clearDiskMounted(i);
     }
 
     MBR mbr = getMBR(values.path);
@@ -227,8 +227,8 @@ void deletePart()
 
     if (j != _ERROR_)
     {
-        printf(ANSI_COLOR_RED "[e] La partición %s se encuentra montada\n" ANSI_COLOR_RESET, values.id);
-        return;
+        clearPartMounted(i, j);
+        clearDiskMounted(i);
     }
 
     MBR mbr = getMBR(values.path);

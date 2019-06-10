@@ -79,5 +79,24 @@ void clearValues()
     command = -1;
 }
 
+void clearDiskMounted (int i)
+{
+    for (int j = 0; j < 20; j++)
+    {
+        if (disks_mount[i].parts_mount[j].mount_id != 0)
+            return;
+    }
+    disks_mount[i].letter = '0';
+    memset(disks_mount[i].path, 0, 300);
+}
+
+void clearPartMounted (int i, int j)
+{
+    disks_mount[i].parts_mount[j].mount_type = '0';
+    disks_mount[i].parts_mount[j].mount_start = 0;
+    disks_mount[i].parts_mount[j].mount_size = 0;
+    disks_mount[i].parts_mount[j].mount_id = 0;
+    memset(disks_mount[i].parts_mount[j].mount_name, 0, 15);   
+}
 
 #endif
