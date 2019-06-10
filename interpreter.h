@@ -18,7 +18,7 @@ int loadCommand(char input[])
     strcat(input, "$"); // EOF
 
     int i = 0;
-    int param = -1;
+    int param = _ERROR_;
 
     int step = 0;
     int quotation_marks = 0;
@@ -51,7 +51,15 @@ int loadCommand(char input[])
         {
             break;
         }
-        if (input[i] == '-' || input[i] == '~')
+        if (input[i] == '-')
+        {
+            if (param == _ERROR_)
+            {
+                i++;
+                continue;
+            }
+        }
+        if (input[i] == '~')
         {
             i++;
             continue;
@@ -199,6 +207,7 @@ int loadCommand(char input[])
                 }
                 memset(auxiliar, 0, 300);
                 step = _PARAM_;
+                param = _ERROR_;
                 i++;
                 if (comment)
                     break;
