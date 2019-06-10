@@ -263,8 +263,10 @@ void deletePart()
     }
     
     int ext = getNumberExtendedPart(mbr.partitions);
-    EBR ebr = getEBR(values.path, mbr.partitions[ext].part_start);
-    getSpaceLogicalDetail(values.path, ebr, mbr.partitions[ext].part_start + mbr.partitions[ext].part_size);
+    int start_extended = mbr.partitions[ext].part_start;
+    int size_extended = mbr.partitions[ext].part_size;
+    EBR ebr = getEBR(values.path, start_extended);
+    getSpaceLogicalDetail(values.path, ebr, start_extended + size_extended);
 
     for (int i = 0; i < 50; i++)
     {
@@ -288,7 +290,8 @@ void deletePart()
                             next.part_start = ebr.part_start;
                         
                         updateEBR(values.path, prev, prev.part_start);
-                        clearPartDisk(values.path, ebr.part_start, ebr.part_size + sizeof(EBR));
+                        if (strcmp(values.del, "full") == 0)
+                            clearPartDisk(values.path, ebr.part_start, ebr.part_size + sizeof(EBR));
                         updateEBR(values.path, next, next.part_start);
                     }
                     else {
@@ -311,6 +314,7 @@ void deletePart()
             }
         }
     }
+    printf(ANSI_COLOR_RED "[e] No se encontró la partición %s\n" ANSI_COLOR_RESET, values.name);
 }
 
 void createPart()

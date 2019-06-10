@@ -8,9 +8,8 @@ digraph {
 				<td rowspan="2">MBR<br/>0.0003 % de Disco</td>
 				<td rowspan="2">Part12<br/>9.14 % de Disco</td>
 				<td rowspan="2">Part13<br/>9.14 % de Disco</td>
-				<td rowspan="2">Part14<br/>9.14 % de Disco</td>
+				<td rowspan="2">Free<br/>9.14 % de Disco</td>
 				<td colspan="20">Extendida</td>
-				<td rowspan="2">Free<br/>38.67 % de Disco</td>
 			</tr>
 			<tr>
 				<td>EBR</td>

@@ -17,7 +17,7 @@ digraph {
 			</tr>
 			<tr>
 				<td>MBR Fecha de Creación</td>
-				<td>09/06/19 19:05</td>
+				<td>09/06/19 21:03</td>
 			</tr>
 			<tr>
 				<td>MBR Disk Signature</td>
@@ -83,33 +83,6 @@ digraph {
 			</tr>
 			<tr>
 				<td colspan="2">Partición 2</td>
-			</tr>
-			<tr>
-				<td>Part status</td>
-				<td>0</td>
-			</tr>
-			<tr>
-				<td>Part type</td>
-				<td>p</td>
-			</tr>
-			<tr>
-				<td>Part fit</td>
-				<td>b</td>
-			</tr>
-			<tr>
-				<td>Part start</td>
-				<td>9584780</td>
-			</tr>
-			<tr>
-				<td>Part size</td>
-				<td>4792320</td>
-			</tr>
-			<tr>
-				<td>Part name</td>
-				<td>Part14</td>
-			</tr>
-			<tr>
-				<td colspan="2">Partición 3</td>
 			</tr>
 			<tr>
 				<td>Part status</td>

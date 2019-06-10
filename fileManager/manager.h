@@ -78,7 +78,7 @@ int clearPartDisk(char path[], int start, int size)
         char buffer[1024];
         memset(buffer, 0, 1024);
 
-        for (int i = 0; i < size / 1024; i++)
+        for (int i = start; i < size / 1024; i++)
         {
             fwrite(buffer, sizeof(buffer), 1, file);
             fflush(file);
