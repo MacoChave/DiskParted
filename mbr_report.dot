@@ -17,7 +17,7 @@ digraph {
 			</tr>
 			<tr>
 				<td>MBR Fecha de Creación</td>
-				<td>09/06/19 13:08</td>
+				<td>09/06/19 19:05</td>
 			</tr>
 			<tr>
 				<td>MBR Disk Signature</td>
@@ -48,41 +48,14 @@ digraph {
 			</tr>
 			<tr>
 				<td>Part size</td>
-				<td>7864320</td>
+				<td>4792320</td>
 			</tr>
 			<tr>
 				<td>Part name</td>
-				<td>Part1</td>
+				<td>Part12</td>
 			</tr>
 			<tr>
 				<td colspan="2">Partición 1</td>
-			</tr>
-			<tr>
-				<td>Part status</td>
-				<td>0</td>
-			</tr>
-			<tr>
-				<td>Part type</td>
-				<td>e</td>
-			</tr>
-			<tr>
-				<td>Part fit</td>
-				<td>f</td>
-			</tr>
-			<tr>
-				<td>Part start</td>
-				<td>7864460</td>
-			</tr>
-			<tr>
-				<td>Part size</td>
-				<td>5664768</td>
-			</tr>
-			<tr>
-				<td>Part name</td>
-				<td>Part2</td>
-			</tr>
-			<tr>
-				<td colspan="2">Partición 2</td>
 			</tr>
 			<tr>
 				<td>Part status</td>
@@ -98,18 +71,18 @@ digraph {
 			</tr>
 			<tr>
 				<td>Part start</td>
-				<td>13529228</td>
+				<td>4792460</td>
 			</tr>
 			<tr>
 				<td>Part size</td>
-				<td>2779136</td>
+				<td>4792320</td>
 			</tr>
 			<tr>
 				<td>Part name</td>
-				<td>Part3</td>
+				<td>Part13</td>
 			</tr>
 			<tr>
-				<td colspan="2">Partición 3</td>
+				<td colspan="2">Partición 2</td>
 			</tr>
 			<tr>
 				<td>Part status</td>
@@ -125,15 +98,42 @@ digraph {
 			</tr>
 			<tr>
 				<td>Part start</td>
-				<td>16308364</td>
+				<td>9584780</td>
 			</tr>
 			<tr>
 				<td>Part size</td>
-				<td>7864320</td>
+				<td>4792320</td>
 			</tr>
 			<tr>
 				<td>Part name</td>
-				<td>Part4</td>
+				<td>Part14</td>
+			</tr>
+			<tr>
+				<td colspan="2">Partición 3</td>
+			</tr>
+			<tr>
+				<td>Part status</td>
+				<td>0</td>
+			</tr>
+			<tr>
+				<td>Part type</td>
+				<td>e</td>
+			</tr>
+			<tr>
+				<td>Part fit</td>
+				<td>w</td>
+			</tr>
+			<tr>
+				<td>Part start</td>
+				<td>14377100</td>
+			</tr>
+			<tr>
+				<td>Part size</td>
+				<td>17776640</td>
+			</tr>
+			<tr>
+				<td>Part name</td>
+				<td>Part15</td>
 			</tr>
 		</table>
 	>]
@@ -156,19 +156,19 @@ digraph {
 			</tr>
 			<tr>
 				<td>Part start</td>
-				<td>7864460</td>
+				<td>14377100</td>
 			</tr>
 			<tr>
 				<td>Part size</td>
-				<td>1300480</td>
+				<td>1228800</td>
 			</tr>
 			<tr>
 				<td>Part next</td>
-				<td>9164972</td>
+				<td>15605932</td>
 			</tr>
 			<tr>
 				<td>Part name</td>
-				<td>Part5</td>
+				<td>Part16</td>
 			</tr>
 		</table>
 	>]
@@ -191,19 +191,19 @@ digraph {
 			</tr>
 			<tr>
 				<td>Part start</td>
-				<td>9164972</td>
+				<td>15605932</td>
 			</tr>
 			<tr>
 				<td>Part size</td>
-				<td>1300480</td>
+				<td>1228800</td>
 			</tr>
 			<tr>
 				<td>Part next</td>
-				<td>10465484</td>
+				<td>16834764</td>
 			</tr>
 			<tr>
 				<td>Part name</td>
-				<td>Part6</td>
+				<td>Part17</td>
 			</tr>
 		</table>
 	>]
@@ -226,19 +226,19 @@ digraph {
 			</tr>
 			<tr>
 				<td>Part start</td>
-				<td>10465484</td>
+				<td>16834764</td>
 			</tr>
 			<tr>
 				<td>Part size</td>
-				<td>1300480</td>
+				<td>1228800</td>
 			</tr>
 			<tr>
 				<td>Part next</td>
-				<td>11765996</td>
+				<td>18063596</td>
 			</tr>
 			<tr>
 				<td>Part name</td>
-				<td>Part7</td>
+				<td>Part18</td>
 			</tr>
 		</table>
 	>]
@@ -261,19 +261,229 @@ digraph {
 			</tr>
 			<tr>
 				<td>Part start</td>
-				<td>11765996</td>
+				<td>18063596</td>
 			</tr>
 			<tr>
 				<td>Part size</td>
-				<td>1300480</td>
+				<td>1228800</td>
 			</tr>
 			<tr>
 				<td>Part next</td>
-				<td>13066508</td>
+				<td>19292428</td>
 			</tr>
 			<tr>
 				<td>Part name</td>
-				<td>Part8</td>
+				<td>Part19</td>
+			</tr>
+		</table>
+	>]
+	EBR5 [label=<
+		<table border="0" cellborder="1" cellspacing="0">
+			<tr>
+				<td colspan="2">Reporte EBR 5</td>
+			</tr>
+			<tr>
+				<td>Nombre</td>
+				<td>Valor</td>
+			</tr>
+			<tr>
+				<td>Part status</td>
+				<td>0</td>
+			</tr>
+			<tr>
+				<td>Part fit</td>
+				<td>b</td>
+			</tr>
+			<tr>
+				<td>Part start</td>
+				<td>19292428</td>
+			</tr>
+			<tr>
+				<td>Part size</td>
+				<td>1228800</td>
+			</tr>
+			<tr>
+				<td>Part next</td>
+				<td>20521260</td>
+			</tr>
+			<tr>
+				<td>Part name</td>
+				<td>Part20</td>
+			</tr>
+		</table>
+	>]
+	EBR6 [label=<
+		<table border="0" cellborder="1" cellspacing="0">
+			<tr>
+				<td colspan="2">Reporte EBR 6</td>
+			</tr>
+			<tr>
+				<td>Nombre</td>
+				<td>Valor</td>
+			</tr>
+			<tr>
+				<td>Part status</td>
+				<td>0</td>
+			</tr>
+			<tr>
+				<td>Part fit</td>
+				<td>b</td>
+			</tr>
+			<tr>
+				<td>Part start</td>
+				<td>20521260</td>
+			</tr>
+			<tr>
+				<td>Part size</td>
+				<td>1228800</td>
+			</tr>
+			<tr>
+				<td>Part next</td>
+				<td>21750092</td>
+			</tr>
+			<tr>
+				<td>Part name</td>
+				<td>Part21</td>
+			</tr>
+		</table>
+	>]
+	EBR7 [label=<
+		<table border="0" cellborder="1" cellspacing="0">
+			<tr>
+				<td colspan="2">Reporte EBR 7</td>
+			</tr>
+			<tr>
+				<td>Nombre</td>
+				<td>Valor</td>
+			</tr>
+			<tr>
+				<td>Part status</td>
+				<td>0</td>
+			</tr>
+			<tr>
+				<td>Part fit</td>
+				<td>b</td>
+			</tr>
+			<tr>
+				<td>Part start</td>
+				<td>21750092</td>
+			</tr>
+			<tr>
+				<td>Part size</td>
+				<td>1228800</td>
+			</tr>
+			<tr>
+				<td>Part next</td>
+				<td>22978924</td>
+			</tr>
+			<tr>
+				<td>Part name</td>
+				<td>Part22</td>
+			</tr>
+		</table>
+	>]
+	EBR8 [label=<
+		<table border="0" cellborder="1" cellspacing="0">
+			<tr>
+				<td colspan="2">Reporte EBR 8</td>
+			</tr>
+			<tr>
+				<td>Nombre</td>
+				<td>Valor</td>
+			</tr>
+			<tr>
+				<td>Part status</td>
+				<td>0</td>
+			</tr>
+			<tr>
+				<td>Part fit</td>
+				<td>b</td>
+			</tr>
+			<tr>
+				<td>Part start</td>
+				<td>22978924</td>
+			</tr>
+			<tr>
+				<td>Part size</td>
+				<td>1228800</td>
+			</tr>
+			<tr>
+				<td>Part next</td>
+				<td>24207756</td>
+			</tr>
+			<tr>
+				<td>Part name</td>
+				<td>Part23</td>
+			</tr>
+		</table>
+	>]
+	EBR9 [label=<
+		<table border="0" cellborder="1" cellspacing="0">
+			<tr>
+				<td colspan="2">Reporte EBR 9</td>
+			</tr>
+			<tr>
+				<td>Nombre</td>
+				<td>Valor</td>
+			</tr>
+			<tr>
+				<td>Part status</td>
+				<td>0</td>
+			</tr>
+			<tr>
+				<td>Part fit</td>
+				<td>b</td>
+			</tr>
+			<tr>
+				<td>Part start</td>
+				<td>24207756</td>
+			</tr>
+			<tr>
+				<td>Part size</td>
+				<td>1228800</td>
+			</tr>
+			<tr>
+				<td>Part next</td>
+				<td>25436588</td>
+			</tr>
+			<tr>
+				<td>Part name</td>
+				<td>Part24</td>
+			</tr>
+		</table>
+	>]
+	EBR10 [label=<
+		<table border="0" cellborder="1" cellspacing="0">
+			<tr>
+				<td colspan="2">Reporte EBR 10</td>
+			</tr>
+			<tr>
+				<td>Nombre</td>
+				<td>Valor</td>
+			</tr>
+			<tr>
+				<td>Part status</td>
+				<td>0</td>
+			</tr>
+			<tr>
+				<td>Part fit</td>
+				<td>b</td>
+			</tr>
+			<tr>
+				<td>Part start</td>
+				<td>25436588</td>
+			</tr>
+			<tr>
+				<td>Part size</td>
+				<td>1228800</td>
+			</tr>
+			<tr>
+				<td>Part next</td>
+				<td>26665420</td>
+			</tr>
+			<tr>
+				<td>Part name</td>
+				<td>Part25</td>
 			</tr>
 		</table>
 	>]

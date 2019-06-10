@@ -35,7 +35,9 @@ void reportDisk (MBR mbr, char path_disk[])
     file = fopen(dotfile, "w");
     int no_p = countPrimary(mbr.partitions);
     int no_l = countLogical();
-    double size = 0;
+    double dividend = 0.0;
+    double divider = 0.0;
+    double percent = 0.0;
     int pivot = sizeof(MBR);
 
     if (file != NULL)
@@ -46,9 +48,11 @@ void reportDisk (MBR mbr, char path_disk[])
         fprintf(file, "\trankdir = LR\n");
         fprintf(file, "\tDISK [label=<\n");
         fprintf(file, "\t\t<table border=\"0\" cellborder=\"1\" cellspacing=\"0\">\n");
-        size = (sizeof(MBR) * 100) / mbr.size;
+        dividend = sizeof(MBR);
+        divider = mbr.size;
+        percent = dividend / divider;
         fprintf(file, "\t\t\t<tr>\n");
-        fprintf(file, "\t\t\t\t<td rowspan=\"2\">MBR <br/> %.4f %%</td>\n", size);
+        fprintf(file, "\t\t\t\t<td rowspan=\"2\">MBR<br/>%.4f %% de Disco</td>\n", percent * 100);
         
         for (int i = 0; i < 4; i++)
         {
@@ -56,22 +60,25 @@ void reportDisk (MBR mbr, char path_disk[])
             {
                 if (mbr.partitions[i].part_size > 0)
                 {
-                    size = (mbr.partitions[i].part_start - pivot * 100) / mbr.size;
+                    dividend = mbr.partitions[i].part_start - pivot;
+                    percent = dividend / divider;
                     pivot = mbr.partitions[i].part_start;
                 }
                 else
                 {
-                    size = (mbr.size - pivot * 100) / mbr.size;
+                    dividend = mbr.size - pivot;
+                    percent = dividend / divider;
                     pivot = mbr.size;
-                    i = 4;
+                    break;
                 }
-                fprintf(file, "\t\t\t\t<td rowspan=\"2\">Free <br/> %.2f %%</td>\n", size);
+                fprintf(file, "\t\t\t\t<td rowspan=\"2\">Free<br/>%.2f %% de Disco</td>\n", percent * 100);
             }
             if (mbr.partitions[i].part_type == 'p')
             {
                 pivot = mbr.partitions[i].part_start + mbr.partitions[i].part_size;
-                size = (mbr.partitions[i].part_size * 100) / mbr.size;
-                fprintf(file, "\t\t\t\t<td rowspan=\"2\">%s <br/> %.2f %%</td>\n", mbr.partitions[i].part_name, size);
+                dividend = mbr.partitions[i].part_size;
+                percent = dividend / divider;
+                fprintf(file, "\t\t\t\t<td rowspan=\"2\">%s<br/>%.2f %% de Disco</td>\n", mbr.partitions[i].part_name, percent * 100);
             }
             else if (mbr.partitions[i].part_type == 'e')
             {
@@ -81,8 +88,9 @@ void reportDisk (MBR mbr, char path_disk[])
         }
         if (pivot < mbr.size)
         {
-            size = (mbr.size - pivot * 100) / mbr.size;
-            fprintf(file, "\t\t\t\t<td rowspan=\"2\">Free <br/> %.2f %%</td>\n", size);
+            dividend = mbr.size - pivot;
+            percent = dividend / divider;
+            fprintf(file, "\t\t\t\t<td rowspan=\"2\">Free<br/>%.2f %% de Disco</td>\n", percent * 100);
         }
         fprintf(file, "\t\t\t</tr>\n");
 
@@ -96,13 +104,15 @@ void reportDisk (MBR mbr, char path_disk[])
                 {
                     EBR ebr = getEBR(path_disk, spaces[i].start);
                     fprintf(file, "\t\t\t\t<td>EBR</td>\n");
-                    size = (spaces[i].space * 100) / mbr.size;
-                    fprintf(file, "\t\t\t\t<td>%s <br/> %.2f %%</td>\n", ebr.ebr_name, size);
+                    dividend = spaces[i].space;
+                    percent = dividend / divider;
+                    fprintf(file, "\t\t\t\t<td>%s<br/>%.2f %% de Disco</td>\n", ebr.ebr_name, percent * 100);
                 }
                 else if (spaces[i].type == 'f')
                 {
-                    size = (spaces[i].space * 100) / mbr.size;
-                    fprintf(file, "\t\t\t\t<td>Free <br/> %.2f %%</td>\n", size);
+                    dividend = spaces[i].space;
+                    percent = dividend / divider;
+                    fprintf(file, "\t\t\t\t<td>Free<br/>%.2f %% de Disco</td>\n", percent * 100);
                 }
             }
             fprintf(file, "\t\t\t</tr>\n");
