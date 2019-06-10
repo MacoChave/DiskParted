@@ -110,11 +110,11 @@ void modifyPart()
     int i = getDiskByPath(values.path);
     int j = getPartByName(values.name, i);
 
-    if (j != _ERROR_)
-    {
-        clearPartMounted(i, j);
-        clearDiskMounted(i);
-    }
+    // if (j != _ERROR_)
+    // {
+    //     clearPartMounted(i, j);
+    //     clearDiskMounted(i);
+    // }
 
     MBR mbr = getMBR(values.path);
 
