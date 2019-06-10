@@ -53,7 +53,7 @@ struct Mount
 {
     char path[300];
     char letter;
-    PartMount parts_mount[20];
+    PartMount parts_mount[30];
 };
 
 struct Values

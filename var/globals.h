@@ -102,7 +102,7 @@ void clearPartMounted (int i, int j)
 
 void clearAllPartMounted (int i)
 {
-    for (int j = 0; j < 20; j++)
+    for (int j = 0; j < 30; j++)
         clearPartMounted(i, j);    
 }
 #endif

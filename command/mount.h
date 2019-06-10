@@ -9,7 +9,7 @@ int mountDisk()
 {
     Mount mount;
     char letter = 'a';
-    for (int j = 0; j < 20; j++)
+    for (int j = 0; j < 30; j++)
     {
         mount.parts_mount[j].mount_type = '0';
         mount.parts_mount[j].mount_start = 0;
@@ -36,7 +36,7 @@ int mountDisk()
 
 int mountPart(PartMount partMount, int i)
 {
-    for (int j = 0; j < 10; j++)
+    for (int j = 0; j < 30; j++)
     {
         if (disks_mount[i].parts_mount[j].mount_size <= 0)
         {
