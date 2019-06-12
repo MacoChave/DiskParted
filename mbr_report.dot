@@ -5,107 +5,107 @@ digraph {
 	MBR [label=<
 		<table border="0" cellborder="1" cellspacing="0">
 			<tr>
-				<td colspan="2">MBR Report</td>
+				<td bgcolor="crimson" colspan="2">MBR Report</td>
 			</tr>
 			<tr>
-				<td>Nombre</td>
-				<td>Valor</td>
+				<td bgcolor="firebrick1">Nombre</td>
+				<td bgcolor="firebrick1">Valor</td>
 			</tr>
 			<tr>
-				<td>MBR Tamaño</td>
+				<td bgcolor="salmon">MBR Tamaño</td>
 				<td>52428800</td>
 			</tr>
 			<tr>
-				<td>MBR Fecha de Creación</td>
-				<td>11/06/19 20:03</td>
+				<td bgcolor="salmon">MBR Fecha de Creación</td>
+				<td>11/06/19 20:26</td>
 			</tr>
 			<tr>
-				<td>MBR Disk Signature</td>
+				<td bgcolor="salmon">MBR Disk Signature</td>
 				<td>2010</td>
 			</tr>
 			<tr>
-				<td>Disk fit</td>
+				<td bgcolor="salmon">Disk fit</td>
 				<td>f</td>
 			</tr>
 			<tr>
-				<td colspan="2">Partición 0</td>
+				<td bgcolor="firebrick1" colspan="2">Partición 0</td>
 			</tr>
 			<tr>
-				<td>Part status</td>
+				<td bgcolor="salmon">Part status</td>
 				<td>0</td>
 			</tr>
 			<tr>
-				<td>Part type</td>
+				<td bgcolor="salmon">Part type</td>
 				<td>p</td>
 			</tr>
 			<tr>
-				<td>Part fit</td>
+				<td bgcolor="salmon">Part fit</td>
 				<td>b</td>
 			</tr>
 			<tr>
-				<td>Part start</td>
+				<td bgcolor="salmon">Part start</td>
 				<td>140</td>
 			</tr>
 			<tr>
-				<td>Part size</td>
+				<td bgcolor="salmon">Part size</td>
 				<td>4792320</td>
 			</tr>
 			<tr>
-				<td>Part name</td>
+				<td bgcolor="salmon">Part name</td>
 				<td>Part12</td>
 			</tr>
 			<tr>
-				<td colspan="2">Partición 1</td>
+				<td bgcolor="firebrick1" colspan="2">Partición 1</td>
 			</tr>
 			<tr>
-				<td>Part status</td>
+				<td bgcolor="salmon">Part status</td>
 				<td>0</td>
 			</tr>
 			<tr>
-				<td>Part type</td>
+				<td bgcolor="salmon">Part type</td>
 				<td>p</td>
 			</tr>
 			<tr>
-				<td>Part fit</td>
+				<td bgcolor="salmon">Part fit</td>
 				<td>w</td>
 			</tr>
 			<tr>
-				<td>Part start</td>
+				<td bgcolor="salmon">Part start</td>
 				<td>4792460</td>
 			</tr>
 			<tr>
-				<td>Part size</td>
+				<td bgcolor="salmon">Part size</td>
 				<td>5816320</td>
 			</tr>
 			<tr>
-				<td>Part name</td>
+				<td bgcolor="salmon">Part name</td>
 				<td>Part13</td>
 			</tr>
 			<tr>
-				<td colspan="2">Partición 2</td>
+				<td bgcolor="firebrick1" colspan="2">Partición 2</td>
 			</tr>
 			<tr>
-				<td>Part status</td>
+				<td bgcolor="salmon">Part status</td>
 				<td>0</td>
 			</tr>
 			<tr>
-				<td>Part type</td>
+				<td bgcolor="salmon">Part type</td>
 				<td>e</td>
 			</tr>
 			<tr>
-				<td>Part fit</td>
+				<td bgcolor="salmon">Part fit</td>
 				<td>w</td>
 			</tr>
 			<tr>
-				<td>Part start</td>
+				<td bgcolor="salmon">Part start</td>
 				<td>14377100</td>
 			</tr>
 			<tr>
-				<td>Part size</td>
+				<td bgcolor="salmon">Part size</td>
 				<td>17776640</td>
 			</tr>
 			<tr>
-				<td>Part name</td>
+				<td bgcolor="salmon">Part name</td>
 				<td>Part15</td>
 			</tr>
 		</table>
@@ -113,34 +113,34 @@ digraph {
 	EBR1 [label=<
 		<table border="0" cellborder="1" cellspacing="0">
 			<tr>
-				<td colspan="2">Reporte EBR 1</td>
+				<td bgcolor="crimson" colspan="2">Reporte EBR 1</td>
 			</tr>
 			<tr>
-				<td>Nombre</td>
-				<td>Valor</td>
+				<td bgcolor="firebrick1">Nombre</td>
+				<td bgcolor="firebrick1">Valor</td>
 			</tr>
 			<tr>
-				<td>Part status</td>
+				<td bgcolor="salmon">Part status</td>
 				<td>0</td>
 			</tr>
 			<tr>
-				<td>Part fit</td>
+				<td bgcolor="salmon">Part fit</td>
 				<td>b</td>
 			</tr>
 			<tr>
-				<td>Part start</td>
+				<td bgcolor="salmon">Part start</td>
 				<td>14377100</td>
 			</tr>
 			<tr>
-				<td>Part size</td>
+				<td bgcolor="salmon">Part size</td>
 				<td>1228800</td>
 			</tr>
 			<tr>
-				<td>Part next</td>
+				<td bgcolor="salmon">Part next</td>
 				<td>15605900</td>
 			</tr>
 			<tr>
-				<td>Part name</td>
+				<td bgcolor="salmon">Part name</td>
 				<td>Part16</td>
 			</tr>
 		</table>
@@ -148,34 +148,34 @@ digraph {
 	EBR2 [label=<
 		<table border="0" cellborder="1" cellspacing="0">
 			<tr>
-				<td colspan="2">Reporte EBR 2</td>
+				<td bgcolor="crimson" colspan="2">Reporte EBR 2</td>
 			</tr>
 			<tr>
-				<td>Nombre</td>
-				<td>Valor</td>
+				<td bgcolor="firebrick1">Nombre</td>
+				<td bgcolor="firebrick1">Valor</td>
 			</tr>
 			<tr>
-				<td>Part status</td>
+				<td bgcolor="salmon">Part status</td>
 				<td>0</td>
 			</tr>
 			<tr>
-				<td>Part fit</td>
+				<td bgcolor="salmon">Part fit</td>
 				<td>b</td>
 			</tr>
 			<tr>
-				<td>Part start</td>
+				<td bgcolor="salmon">Part start</td>
 				<td>15605900</td>
 			</tr>
 			<tr>
-				<td>Part size</td>
+				<td bgcolor="salmon">Part size</td>
 				<td>1228800</td>
 			</tr>
 			<tr>
-				<td>Part next</td>
+				<td bgcolor="salmon">Part next</td>
 				<td>16834700</td>
 			</tr>
 			<tr>
-				<td>Part name</td>
+				<td bgcolor="salmon">Part name</td>
 				<td>Part17</td>
 			</tr>
 		</table>
@@ -183,34 +183,34 @@ digraph {
 	EBR3 [label=<
 		<table border="0" cellborder="1" cellspacing="0">
 			<tr>
-				<td colspan="2">Reporte EBR 3</td>
+				<td bgcolor="crimson" colspan="2">Reporte EBR 3</td>
 			</tr>
 			<tr>
-				<td>Nombre</td>
-				<td>Valor</td>
+				<td bgcolor="firebrick1">Nombre</td>
+				<td bgcolor="firebrick1">Valor</td>
 			</tr>
 			<tr>
-				<td>Part status</td>
+				<td bgcolor="salmon">Part status</td>
 				<td>0</td>
 			</tr>
 			<tr>
-				<td>Part fit</td>
+				<td bgcolor="salmon">Part fit</td>
 				<td>w</td>
 			</tr>
 			<tr>
-				<td>Part start</td>
+				<td bgcolor="salmon">Part start</td>
 				<td>16834700</td>
 			</tr>
 			<tr>
-				<td>Part size</td>
+				<td bgcolor="salmon">Part size</td>
 				<td>1228800</td>
 			</tr>
 			<tr>
-				<td>Part next</td>
+				<td bgcolor="salmon">Part next</td>
 				<td>18063500</td>
 			</tr>
 			<tr>
-				<td>Part name</td>
+				<td bgcolor="salmon">Part name</td>
 				<td>Part18</td>
 			</tr>
 		</table>
@@ -218,34 +218,34 @@ digraph {
 	EBR4 [label=<
 		<table border="0" cellborder="1" cellspacing="0">
 			<tr>
-				<td colspan="2">Reporte EBR 4</td>
+				<td bgcolor="crimson" colspan="2">Reporte EBR 4</td>
 			</tr>
 			<tr>
-				<td>Nombre</td>
-				<td>Valor</td>
+				<td bgcolor="firebrick1">Nombre</td>
+				<td bgcolor="firebrick1">Valor</td>
 			</tr>
 			<tr>
-				<td>Part status</td>
+				<td bgcolor="salmon">Part status</td>
 				<td>0</td>
 			</tr>
 			<tr>
-				<td>Part fit</td>
+				<td bgcolor="salmon">Part fit</td>
 				<td>w</td>
 			</tr>
 			<tr>
-				<td>Part start</td>
+				<td bgcolor="salmon">Part start</td>
 				<td>18063500</td>
 			</tr>
 			<tr>
-				<td>Part size</td>
+				<td bgcolor="salmon">Part size</td>
 				<td>1228800</td>
 			</tr>
 			<tr>
-				<td>Part next</td>
+				<td bgcolor="salmon">Part next</td>
 				<td>19292300</td>
 			</tr>
 			<tr>
-				<td>Part name</td>
+				<td bgcolor="salmon">Part name</td>
 				<td>Part19</td>
 			</tr>
 		</table>
@@ -253,34 +253,34 @@ digraph {
 	EBR5 [label=<
 		<table border="0" cellborder="1" cellspacing="0">
 			<tr>
-				<td colspan="2">Reporte EBR 5</td>
+				<td bgcolor="crimson" colspan="2">Reporte EBR 5</td>
 			</tr>
 			<tr>
-				<td>Nombre</td>
-				<td>Valor</td>
+				<td bgcolor="firebrick1">Nombre</td>
+				<td bgcolor="firebrick1">Valor</td>
 			</tr>
 			<tr>
-				<td>Part status</td>
+				<td bgcolor="salmon">Part status</td>
 				<td>0</td>
 			</tr>
 			<tr>
-				<td>Part fit</td>
+				<td bgcolor="salmon">Part fit</td>
 				<td>b</td>
 			</tr>
 			<tr>
-				<td>Part start</td>
+				<td bgcolor="salmon">Part start</td>
 				<td>19292300</td>
 			</tr>
 			<tr>
-				<td>Part size</td>
+				<td bgcolor="salmon">Part size</td>
 				<td>1228800</td>
 			</tr>
 			<tr>
-				<td>Part next</td>
+				<td bgcolor="salmon">Part next</td>
 				<td>20521100</td>
 			</tr>
 			<tr>
-				<td>Part name</td>
+				<td bgcolor="salmon">Part name</td>
 				<td>Part20</td>
 			</tr>
 		</table>
@@ -288,34 +288,34 @@ digraph {
 	EBR6 [label=<
 		<table border="0" cellborder="1" cellspacing="0">
 			<tr>
-				<td colspan="2">Reporte EBR 6</td>
+				<td bgcolor="crimson" colspan="2">Reporte EBR 6</td>
 			</tr>
 			<tr>
-				<td>Nombre</td>
-				<td>Valor</td>
+				<td bgcolor="firebrick1">Nombre</td>
+				<td bgcolor="firebrick1">Valor</td>
 			</tr>
 			<tr>
-				<td>Part status</td>
+				<td bgcolor="salmon">Part status</td>
 				<td>0</td>
 			</tr>
 			<tr>
-				<td>Part fit</td>
+				<td bgcolor="salmon">Part fit</td>
 				<td>b</td>
 			</tr>
 			<tr>
-				<td>Part start</td>
+				<td bgcolor="salmon">Part start</td>
 				<td>20521100</td>
 			</tr>
 			<tr>
-				<td>Part size</td>
+				<td bgcolor="salmon">Part size</td>
 				<td>1228800</td>
 			</tr>
 			<tr>
-				<td>Part next</td>
+				<td bgcolor="salmon">Part next</td>
 				<td>21749900</td>
 			</tr>
 			<tr>
-				<td>Part name</td>
+				<td bgcolor="salmon">Part name</td>
 				<td>Part21</td>
 			</tr>
 		</table>
@@ -323,34 +323,34 @@ digraph {
 	EBR7 [label=<
 		<table border="0" cellborder="1" cellspacing="0">
 			<tr>
-				<td colspan="2">Reporte EBR 7</td>
+				<td bgcolor="crimson" colspan="2">Reporte EBR 7</td>
 			</tr>
 			<tr>
-				<td>Nombre</td>
-				<td>Valor</td>
+				<td bgcolor="firebrick1">Nombre</td>
+				<td bgcolor="firebrick1">Valor</td>
 			</tr>
 			<tr>
-				<td>Part status</td>
+				<td bgcolor="salmon">Part status</td>
 				<td>0</td>
 			</tr>
 			<tr>
-				<td>Part fit</td>
+				<td bgcolor="salmon">Part fit</td>
 				<td>b</td>
 			</tr>
 			<tr>
-				<td>Part start</td>
+				<td bgcolor="salmon">Part start</td>
 				<td>21749900</td>
 			</tr>
 			<tr>
-				<td>Part size</td>
+				<td bgcolor="salmon">Part size</td>
 				<td>1228800</td>
 			</tr>
 			<tr>
-				<td>Part next</td>
+				<td bgcolor="salmon">Part next</td>
 				<td>22978700</td>
 			</tr>
 			<tr>
-				<td>Part name</td>
+				<td bgcolor="salmon">Part name</td>
 				<td>Part22</td>
 			</tr>
 		</table>
@@ -358,34 +358,34 @@ digraph {
 	EBR8 [label=<
 		<table border="0" cellborder="1" cellspacing="0">
 			<tr>
-				<td colspan="2">Reporte EBR 8</td>
+				<td bgcolor="crimson" colspan="2">Reporte EBR 8</td>
 			</tr>
 			<tr>
-				<td>Nombre</td>
-				<td>Valor</td>
+				<td bgcolor="firebrick1">Nombre</td>
+				<td bgcolor="firebrick1">Valor</td>
 			</tr>
 			<tr>
-				<td>Part status</td>
+				<td bgcolor="salmon">Part status</td>
 				<td>0</td>
 			</tr>
 			<tr>
-				<td>Part fit</td>
+				<td bgcolor="salmon">Part fit</td>
 				<td>b</td>
 			</tr>
 			<tr>
-				<td>Part start</td>
+				<td bgcolor="salmon">Part start</td>
 				<td>22978700</td>
 			</tr>
 			<tr>
-				<td>Part size</td>
+				<td bgcolor="salmon">Part size</td>
 				<td>1228800</td>
 			</tr>
 			<tr>
-				<td>Part next</td>
+				<td bgcolor="salmon">Part next</td>
 				<td>24207500</td>
 			</tr>
 			<tr>
-				<td>Part name</td>
+				<td bgcolor="salmon">Part name</td>
 				<td>Part23</td>
 			</tr>
 		</table>
@@ -393,34 +393,34 @@ digraph {
 	EBR9 [label=<
 		<table border="0" cellborder="1" cellspacing="0">
 			<tr>
-				<td colspan="2">Reporte EBR 9</td>
+				<td bgcolor="crimson" colspan="2">Reporte EBR 9</td>
 			</tr>
 			<tr>
-				<td>Nombre</td>
-				<td>Valor</td>
+				<td bgcolor="firebrick1">Nombre</td>
+				<td bgcolor="firebrick1">Valor</td>
 			</tr>
 			<tr>
-				<td>Part status</td>
+				<td bgcolor="salmon">Part status</td>
 				<td>0</td>
 			</tr>
 			<tr>
-				<td>Part fit</td>
+				<td bgcolor="salmon">Part fit</td>
 				<td>b</td>
 			</tr>
 			<tr>
-				<td>Part start</td>
+				<td bgcolor="salmon">Part start</td>
 				<td>24207500</td>
 			</tr>
 			<tr>
-				<td>Part size</td>
+				<td bgcolor="salmon">Part size</td>
 				<td>1228800</td>
 			</tr>
 			<tr>
-				<td>Part next</td>
+				<td bgcolor="salmon">Part next</td>
 				<td>25436300</td>
 			</tr>
 			<tr>
-				<td>Part name</td>
+				<td bgcolor="salmon">Part name</td>
 				<td>Part24</td>
 			</tr>
 		</table>
@@ -428,34 +428,34 @@ digraph {
 	EBR10 [label=<
 		<table border="0" cellborder="1" cellspacing="0">
 			<tr>
-				<td colspan="2">Reporte EBR 10</td>
+				<td bgcolor="crimson" colspan="2">Reporte EBR 10</td>
 			</tr>
 			<tr>
-				<td>Nombre</td>
-				<td>Valor</td>
+				<td bgcolor="firebrick1">Nombre</td>
+				<td bgcolor="firebrick1">Valor</td>
 			</tr>
 			<tr>
-				<td>Part status</td>
+				<td bgcolor="salmon">Part status</td>
 				<td>0</td>
 			</tr>
 			<tr>
-				<td>Part fit</td>
+				<td bgcolor="salmon">Part fit</td>
 				<td>b</td>
 			</tr>
 			<tr>
-				<td>Part start</td>
+				<td bgcolor="salmon">Part start</td>
 				<td>25436300</td>
 			</tr>
 			<tr>
-				<td>Part size</td>
+				<td bgcolor="salmon">Part size</td>
 				<td>1228800</td>
 			</tr>
 			<tr>
-				<td>Part next</td>
+				<td bgcolor="salmon">Part next</td>
 				<td>26665100</td>
 			</tr>
 			<tr>
-				<td>Part name</td>
+				<td bgcolor="salmon">Part name</td>
 				<td>Part25</td>
 			</tr>
 		</table>
