@@ -9,31 +9,58 @@
 
 /* TIPO DE COMANDO */
 #define _EXIT_ -1
-#define _EXEC_ 0
-#define _MKDISK_ 1
-#define _RMDISK_ 2
-#define _FDISK_ 3
-#define _MOUNT_ 4
-#define _UNMOUNT_ 5
-#define _REP_ 6
-#define _PAUSE_ 7
+#define _EXEC_ 1
+#define _MKDISK_ 2
+#define _RMDISK_ 3
+#define _FDISK_ 4
+#define _MOUNT_ 5
+#define _UNMOUNT_ 6
+#define _REP_ 7
+#define _PAUSE_ 8
+#define _MKFS_ 10
+#define _LOGIN_ 11
+#define _LOGOUT_ 12
+#define _MKGRP_ 13
+#define _RMGRP_ 14
+#define _MKUSR_ 15
+#define _RMUSR_ 16
+#define _CHMOD_ 17
+#define _MKFILE_ 18
+#define _CAT_ 17
+#define _REM_ 18
+#define _EDIT_ 19
+#define _REN_ 20
+#define _MKDIR_ 21
+#define _CP_ 22
+#define _MV_ 23
+#define _FIND_ 24
+#define _CHOWN_ 25
+#define _CHGRP_ 26
+#define _RECOVERY_ 27
+#define _LOSS_ 28
 
 /* TIPO DE PARAMETRO */
-#define _SIZE_ 0
-#define _PATH_ 1
-#define _UNIT_ 2
-#define _NAME_ 3
-#define _TYPE_ 4
-#define _FIT_ 5
-#define _DELETE_ 6
-#define _ADD_ 7
-#define _ID_ 8
+#define _SIZE_ 1
+#define _PATH_ 2
+#define _UNIT_ 3
+#define _NAME_ 4
+#define _TYPE_ 5
+#define _FIT_ 6
+#define _DELETE_ 7
+#define _ADD_ 8
+#define _ID_ 9
+#define _FS_ 10
+#define _USR_ 11
+#define _PWD_ 12
+#define _UGO_ 13
+#define _R_ 14
+#define _DEST_ 15
+#define _RUTA_ 16
 
-#define _EXIT_ -1
 #define _COMMAND_ 0
 #define _PARAM_ 1
 #define _VALUE_ 2
-#define _ERROR_ -1
+#define _ERROR_ -2
 
 #define ANSI_COLOR_RED     "\x1b[31m"
 #define ANSI_COLOR_GREEN   "\x1b[32m"
@@ -75,6 +102,17 @@ void clearValues()
     values.type = '0';
     values.size = 0;
     values.add = 0;
+
+    values.isRecursive = 0;
+    values.fs = '2';
+    memset(values.usr, 0, 10);
+    memset(values.pwd, 0, 10);
+    memset(values.grp, 0, 10);
+    memset(values.ugo, 1, 3);
+    memset(values.cont, 0, 300);
+    memset(values.dest, 0, 300);
+    memset(values.ruta, 0, 300);
+    
     isMultiline = 0;
     command = -1;
 }

@@ -10,6 +10,8 @@ typedef struct PartMount PartMount;
 
 typedef struct Values Values;
 typedef struct SpaceDisk SpaceDisk;
+typedef struct PermissionList PermissionList;
+typedef struct SessionVar SessionVar;
 
 struct Partition 
 {
@@ -67,6 +69,17 @@ struct Values
     char type;
     int size;
     int add;
+
+    int isRecursive;
+    char fs;
+    char usr[10];
+    char pwd[10];
+    char grp[10];
+    char ugo[3];
+    char cont[300];
+    char dest[300];
+    char ruta[300];
+    // VARIABLE PARA FILE_N[300][20]
 };
 
 struct SpaceDisk
@@ -77,5 +90,21 @@ struct SpaceDisk
     int next;
     int prev;
 };
+
+struct PermissionList
+{
+    int state;
+    char type;
+    char group[10];
+    char name[10];
+    char pass[10];
+};
+
+struct SessionVar
+{
+    int id_user;
+    char path[300];
+};
+
 
 #endif

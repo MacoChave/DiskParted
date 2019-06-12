@@ -72,7 +72,7 @@ int loadCommand(char input[])
 
         char current_char[2] = {input[i], '\0'};
 
-        if (step == 0) // OBTENER TIPO COMANDO
+        if (step == _COMMAND_) // OBTENER TIPO COMANDO
         {
             if (input[i] != ' ')
             {
@@ -113,7 +113,7 @@ int loadCommand(char input[])
                 continue;
             }
         }
-        else if (step == 1) // OBTENER TIPO PARAMETRO
+        else if (step == _PARAM_) // OBTENER TIPO PARAMETRO
         {
             if (input[i] != ':')
             {
@@ -150,7 +150,7 @@ int loadCommand(char input[])
                 continue;
             }
         }
-        else if (step == 2) // OBTENER VALOR PARAMETRO
+        else if (step == _VALUE_) // OBTENER VALOR PARAMETRO
         {
             if (input[i] == '"')
             {
