@@ -28,14 +28,14 @@ void createLogicalPartition (Partition part, char fit)
         return;
     }
     getSpaceLogicalDetail(values.path, ebr, part.part_start + part.part_size);
-    if (fit == 'f')
+    if (part.part_fit == 'f')
         idx = getFirstAdjustPart();
-    else if (fit == 'b')
+    else if (part.part_fit == 'b')
     {
         getBestAdjustPart();
         idx = getFirstAdjustPart();
     }
-    else if (fit == 'w')
+    else if (part.part_fit == 'w')
     {
         getWorstAdjustPart();
         idx = getFirstAdjustPart();
