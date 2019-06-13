@@ -52,10 +52,12 @@
 #define _FS_ 10
 #define _USR_ 11
 #define _PWD_ 12
-#define _UGO_ 13
-#define _R_ 14
-#define _DEST_ 15
-#define _RUTA_ 16
+#define _GRP_ 13
+#define _UGO_ 14
+#define _CONT_ 15
+#define _FILE_ 16
+#define _DEST_ 17
+#define _RUTA_ 18
 
 #define _COMMAND_ 0
 #define _PARAM_ 1
@@ -70,10 +72,11 @@
 
 Mount disks_mount[10];
 Values values;
+SessionVar sessionVar;
 int isMultiline;
 int command;
 
-void initDisksMount()
+void initDisksMount ()
 {
     for (int i = 0; i < 10; i++)
     {
@@ -91,7 +94,13 @@ void initDisksMount()
     }
 }
 
-void clearValues()
+void initSessionVar ()
+{
+    sessionVar.id_user = 0;
+    memset(sessionVar.path, 0, 300);
+}
+
+void clearValues ()
 {
     memset(values.path, 0, 300);
     memset(values.del, 0, 300);
