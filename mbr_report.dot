@@ -17,7 +17,7 @@ digraph {
 			</tr>
 			<tr>
 				<td bgcolor="salmon">MBR Fecha de Creación</td>
-				<td>12/06/19 20:04</td>
+				<td>19/06/19 16:14</td>
 			</tr>
 			<tr>
 				<td bgcolor="salmon">MBR Disk Signature</td>
@@ -48,14 +48,41 @@ digraph {
 			</tr>
 			<tr>
 				<td bgcolor="salmon">Part size</td>
-				<td>4792320</td>
+				<td>7864320</td>
 			</tr>
 			<tr>
 				<td bgcolor="salmon">Part name</td>
-				<td>Part12</td>
+				<td>Part1</td>
 			</tr>
 			<tr>
 				<td bgcolor="firebrick1" colspan="2">Partición 1</td>
+			</tr>
+			<tr>
+				<td bgcolor="salmon">Part status</td>
+				<td>0</td>
+			</tr>
+			<tr>
+				<td bgcolor="salmon">Part type</td>
+				<td>e</td>
+			</tr>
+			<tr>
+				<td bgcolor="salmon">Part fit</td>
+				<td>f</td>
+			</tr>
+			<tr>
+				<td bgcolor="salmon">Part start</td>
+				<td>7864460</td>
+			</tr>
+			<tr>
+				<td bgcolor="salmon">Part size</td>
+				<td>7864320</td>
+			</tr>
+			<tr>
+				<td bgcolor="salmon">Part name</td>
+				<td>Part2</td>
+			</tr>
+			<tr>
+				<td bgcolor="firebrick1" colspan="2">Partición 2</td>
 			</tr>
 			<tr>
 				<td bgcolor="salmon">Part status</td>
@@ -71,18 +98,18 @@ digraph {
 			</tr>
 			<tr>
 				<td bgcolor="salmon">Part start</td>
-				<td>4792460</td>
+				<td>15728780</td>
 			</tr>
 			<tr>
 				<td bgcolor="salmon">Part size</td>
-				<td>5816320</td>
+				<td>7864320</td>
 			</tr>
 			<tr>
 				<td bgcolor="salmon">Part name</td>
-				<td>Part13</td>
+				<td>Part3</td>
 			</tr>
 			<tr>
-				<td bgcolor="firebrick1" colspan="2">Partición 2</td>
+				<td bgcolor="firebrick1" colspan="2">Partición 3</td>
 			</tr>
 			<tr>
 				<td bgcolor="salmon">Part status</td>
@@ -90,23 +117,23 @@ digraph {
 			</tr>
 			<tr>
 				<td bgcolor="salmon">Part type</td>
-				<td>e</td>
+				<td>p</td>
 			</tr>
 			<tr>
 				<td bgcolor="salmon">Part fit</td>
-				<td>w</td>
+				<td>b</td>
 			</tr>
 			<tr>
 				<td bgcolor="salmon">Part start</td>
-				<td>14377100</td>
+				<td>23593100</td>
 			</tr>
 			<tr>
 				<td bgcolor="salmon">Part size</td>
-				<td>17776640</td>
+				<td>7864320</td>
 			</tr>
 			<tr>
 				<td bgcolor="salmon">Part name</td>
-				<td>Part15</td>
+				<td>Part4</td>
 			</tr>
 		</table>
 	>]
@@ -129,19 +156,19 @@ digraph {
 			</tr>
 			<tr>
 				<td bgcolor="salmon">Part start</td>
-				<td>14377100</td>
+				<td>7864460</td>
 			</tr>
 			<tr>
 				<td bgcolor="salmon">Part size</td>
-				<td>1228800</td>
+				<td>1300480</td>
 			</tr>
 			<tr>
 				<td bgcolor="salmon">Part next</td>
-				<td>15605900</td>
+				<td>9164940</td>
 			</tr>
 			<tr>
 				<td bgcolor="salmon">Part name</td>
-				<td>Part16</td>
+				<td>Part5</td>
 			</tr>
 		</table>
 	>]
@@ -164,19 +191,19 @@ digraph {
 			</tr>
 			<tr>
 				<td bgcolor="salmon">Part start</td>
-				<td>15605900</td>
+				<td>9164940</td>
 			</tr>
 			<tr>
 				<td bgcolor="salmon">Part size</td>
-				<td>1228800</td>
+				<td>1300480</td>
 			</tr>
 			<tr>
 				<td bgcolor="salmon">Part next</td>
-				<td>16834700</td>
+				<td>10465420</td>
 			</tr>
 			<tr>
 				<td bgcolor="salmon">Part name</td>
-				<td>Part17</td>
+				<td>Part6</td>
 			</tr>
 		</table>
 	>]
@@ -199,19 +226,19 @@ digraph {
 			</tr>
 			<tr>
 				<td bgcolor="salmon">Part start</td>
-				<td>16834700</td>
+				<td>10465420</td>
 			</tr>
 			<tr>
 				<td bgcolor="salmon">Part size</td>
-				<td>1228800</td>
+				<td>1300480</td>
 			</tr>
 			<tr>
 				<td bgcolor="salmon">Part next</td>
-				<td>18063500</td>
+				<td>11765900</td>
 			</tr>
 			<tr>
 				<td bgcolor="salmon">Part name</td>
-				<td>Part18</td>
+				<td>Part7</td>
 			</tr>
 		</table>
 	>]
@@ -234,19 +261,19 @@ digraph {
 			</tr>
 			<tr>
 				<td bgcolor="salmon">Part start</td>
-				<td>18063500</td>
+				<td>11765900</td>
 			</tr>
 			<tr>
 				<td bgcolor="salmon">Part size</td>
-				<td>1228800</td>
+				<td>1300480</td>
 			</tr>
 			<tr>
 				<td bgcolor="salmon">Part next</td>
-				<td>19292300</td>
+				<td>13066380</td>
 			</tr>
 			<tr>
 				<td bgcolor="salmon">Part name</td>
-				<td>Part19</td>
+				<td>Part8</td>
 			</tr>
 		</table>
 	>]
@@ -269,19 +296,19 @@ digraph {
 			</tr>
 			<tr>
 				<td bgcolor="salmon">Part start</td>
-				<td>19292300</td>
+				<td>13066380</td>
 			</tr>
 			<tr>
 				<td bgcolor="salmon">Part size</td>
-				<td>1228800</td>
+				<td>1300480</td>
 			</tr>
 			<tr>
 				<td bgcolor="salmon">Part next</td>
-				<td>20521100</td>
+				<td>14366860</td>
 			</tr>
 			<tr>
 				<td bgcolor="salmon">Part name</td>
-				<td>Part20</td>
+				<td>Part9</td>
 			</tr>
 		</table>
 	>]
@@ -304,159 +331,19 @@ digraph {
 			</tr>
 			<tr>
 				<td bgcolor="salmon">Part start</td>
-				<td>20521100</td>
+				<td>14366860</td>
 			</tr>
 			<tr>
 				<td bgcolor="salmon">Part size</td>
-				<td>1228800</td>
+				<td>1300480</td>
 			</tr>
 			<tr>
 				<td bgcolor="salmon">Part next</td>
-				<td>21749900</td>
+				<td>15667340</td>
 			</tr>
 			<tr>
 				<td bgcolor="salmon">Part name</td>
-				<td>Part21</td>
-			</tr>
-		</table>
-	>]
-	EBR7 [label=<
-		<table border="0" cellborder="1" cellspacing="0">
-			<tr>
-				<td bgcolor="crimson" colspan="2">Reporte EBR 7</td>
-			</tr>
-			<tr>
-				<td bgcolor="firebrick1">Nombre</td>
-				<td bgcolor="firebrick1">Valor</td>
-			</tr>
-			<tr>
-				<td bgcolor="salmon">Part status</td>
-				<td>0</td>
-			</tr>
-			<tr>
-				<td bgcolor="salmon">Part fit</td>
-				<td>b</td>
-			</tr>
-			<tr>
-				<td bgcolor="salmon">Part start</td>
-				<td>21749900</td>
-			</tr>
-			<tr>
-				<td bgcolor="salmon">Part size</td>
-				<td>1228800</td>
-			</tr>
-			<tr>
-				<td bgcolor="salmon">Part next</td>
-				<td>22978700</td>
-			</tr>
-			<tr>
-				<td bgcolor="salmon">Part name</td>
-				<td>Part22</td>
-			</tr>
-		</table>
-	>]
-	EBR8 [label=<
-		<table border="0" cellborder="1" cellspacing="0">
-			<tr>
-				<td bgcolor="crimson" colspan="2">Reporte EBR 8</td>
-			</tr>
-			<tr>
-				<td bgcolor="firebrick1">Nombre</td>
-				<td bgcolor="firebrick1">Valor</td>
-			</tr>
-			<tr>
-				<td bgcolor="salmon">Part status</td>
-				<td>0</td>
-			</tr>
-			<tr>
-				<td bgcolor="salmon">Part fit</td>
-				<td>b</td>
-			</tr>
-			<tr>
-				<td bgcolor="salmon">Part start</td>
-				<td>22978700</td>
-			</tr>
-			<tr>
-				<td bgcolor="salmon">Part size</td>
-				<td>1228800</td>
-			</tr>
-			<tr>
-				<td bgcolor="salmon">Part next</td>
-				<td>24207500</td>
-			</tr>
-			<tr>
-				<td bgcolor="salmon">Part name</td>
-				<td>Part23</td>
-			</tr>
-		</table>
-	>]
-	EBR9 [label=<
-		<table border="0" cellborder="1" cellspacing="0">
-			<tr>
-				<td bgcolor="crimson" colspan="2">Reporte EBR 9</td>
-			</tr>
-			<tr>
-				<td bgcolor="firebrick1">Nombre</td>
-				<td bgcolor="firebrick1">Valor</td>
-			</tr>
-			<tr>
-				<td bgcolor="salmon">Part status</td>
-				<td>0</td>
-			</tr>
-			<tr>
-				<td bgcolor="salmon">Part fit</td>
-				<td>b</td>
-			</tr>
-			<tr>
-				<td bgcolor="salmon">Part start</td>
-				<td>24207500</td>
-			</tr>
-			<tr>
-				<td bgcolor="salmon">Part size</td>
-				<td>1228800</td>
-			</tr>
-			<tr>
-				<td bgcolor="salmon">Part next</td>
-				<td>25436300</td>
-			</tr>
-			<tr>
-				<td bgcolor="salmon">Part name</td>
-				<td>Part24</td>
-			</tr>
-		</table>
-	>]
-	EBR10 [label=<
-		<table border="0" cellborder="1" cellspacing="0">
-			<tr>
-				<td bgcolor="crimson" colspan="2">Reporte EBR 10</td>
-			</tr>
-			<tr>
-				<td bgcolor="firebrick1">Nombre</td>
-				<td bgcolor="firebrick1">Valor</td>
-			</tr>
-			<tr>
-				<td bgcolor="salmon">Part status</td>
-				<td>0</td>
-			</tr>
-			<tr>
-				<td bgcolor="salmon">Part fit</td>
-				<td>b</td>
-			</tr>
-			<tr>
-				<td bgcolor="salmon">Part start</td>
-				<td>25436300</td>
-			</tr>
-			<tr>
-				<td bgcolor="salmon">Part size</td>
-				<td>1228800</td>
-			</tr>
-			<tr>
-				<td bgcolor="salmon">Part next</td>
-				<td>26665100</td>
-			</tr>
-			<tr>
-				<td bgcolor="salmon">Part name</td>
-				<td>Part25</td>
+				<td>Part10</td>
 			</tr>
 		</table>
 	>]

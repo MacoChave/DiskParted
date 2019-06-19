@@ -9,6 +9,7 @@
 #include "command/fdisk.h"
 #include "command/mount.h"
 #include "command/unmount.h"
+#include "command/mkfs.h"
 #include "command/rep.h"
 
 extern void exec_exec();
@@ -250,7 +251,12 @@ int loadCommand(char input[])
                         strcpy(values.name, auxiliar);
                         break;
                     case _TYPE_:
-                        values.type = auxiliar[0];
+                        if(strcasecmp(auxiliar, "fast") == 0)
+                            values.type = 'n';
+                        else if (strcasecmp(auxiliar, "full") == 0)
+                            values.type = 'a';
+                        else
+                            values.type = auxiliar[0];
                         break;
                     case _FIT_:
                         values.fit = auxiliar[0];
@@ -330,6 +336,9 @@ int loadCommand(char input[])
             case _REP_:
                 exec_rep();
                 break;
+            case _MKFS_:
+                exec_mkfs();
+                break;
             case _PAUSE_:
                 {char conf[999] = {0};
                 fgets(conf, 999, stdin);
@@ -357,7 +366,7 @@ void exec_exec()
                 command = -1;
                 fgets(input, 999, file);
                 sprintf(input, "%s\n", input);
-                printf(ANSI_COLOR_BLUE "--> %s\n" ANSI_COLOR_RESET, input);
+                printf("--> %s\n", input);
                 if (input[0] != '#' && input[0] != '\n')
                     loadCommand(input);
             }            

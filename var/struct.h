@@ -8,9 +8,17 @@ typedef struct EBR EBR;
 typedef struct Mount Mount;
 typedef struct PartMount PartMount;
 
+typedef struct SuperBlock SuperBlock;
+typedef struct Journal Journal;
+typedef struct Inode Inode;
+typedef struct Content Content;
+typedef struct BlockDir BlockDir;
+typedef struct BlockFile BlockFile;
+typedef struct BlockPointer BlockPointer;
+
 typedef struct Values Values;
 typedef struct SpaceDisk SpaceDisk;
-typedef struct PermissionList PermissionList;
+typedef struct Permission Permission;
 typedef struct SessionVar SessionVar;
 
 struct Partition 
@@ -58,6 +66,72 @@ struct Mount
     PartMount parts_mount[30];
 };
 
+struct SuperBlock
+{
+    int fylesystem_type;
+    int inodes_count;
+    int blocks_count;
+    int free_blocks_count;
+    int free_inodes_count;
+    char mtime[16];
+    char umtime[16];
+    int magic; // 0xEF53
+    int mnt_count;
+    int inode_size;
+    int block_size;
+    int first_inode;
+    int first_block;
+    int bm_inode_start;
+    int bm_block_start;
+    int inode_start;
+    int block_start;
+};
+
+struct Journal
+{
+    char operation;
+    char type_inode;
+    char name[300];
+    char content[300];
+    char date[16];
+    char owner[10];
+    char permission[3];
+};
+
+struct Inode
+{
+    int uid;
+    int gid;
+    int size;
+    char atime[16];
+    char ctime[16];
+    char mtime[16];
+    int block[15];
+    char type;
+    int permission;
+};
+
+struct Content
+{
+    char name[12];
+    int inode;
+};
+
+struct BlockDir
+{
+    Content content[4];
+};
+
+struct BlockFile
+{
+    char content[64];
+};
+
+struct BlockPointer
+{
+    int pointers[16];
+};
+
 struct Values
 {
     char path[300];
@@ -91,7 +165,7 @@ struct SpaceDisk
     int prev;
 };
 
-struct PermissionList
+struct Permission
 {
     int state;
     char type;
@@ -103,8 +177,9 @@ struct PermissionList
 struct SessionVar
 {
     int id_user;
+    int part_start;
     char path[300];
+    SuperBlock superBlock;
 };
-
 
 #endif

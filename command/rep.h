@@ -124,10 +124,13 @@ void reportDisk (MBR mbr, char path_disk[])
     }
 
     char cmd[300] = {0};
-    strcpy(cmd, "dot -Tjpg ");
-    strcat(cmd, "disk_report.dot");
+    strcpy(cmd, "dot -T");
+    strcat(cmd, getExtensionPath(values.path));
+    strcat(cmd, " ");
+    strncat(cmd, dotfile, 15);
     strcat(cmd, " -o ");
     strcat(cmd, values.path);
+    printf(ANSI_COLOR_BLUE "[d] %s\n" ANSI_COLOR_RESET, cmd);
     system(cmd);
 }
 
@@ -279,11 +282,39 @@ void reportMBR (MBR mbr, char path_disk[])
     }
 
     char cmd[300] = {0};
-    strcpy(cmd, "dot -Tpdf ");
+    strcpy(cmd, "dot -T");
+    strcat(cmd, getExtensionPath(values.path));
+    strcat(cmd, " ");
     strcat(cmd, dotfile);
     strcat(cmd, " -o ");
     strcat(cmd, values.path);
+    printf(ANSI_COLOR_BLUE "[d] %s\n" ANSI_COLOR_RESET, cmd);
     system(cmd);
+}
+
+void reportInodes ()
+{
+
+}
+
+void reportBlocks()
+{
+
+}
+
+void reportBitmap()
+{
+
+}
+
+void reportTree ()
+{
+
+}
+
+void reportSuperBlock ()
+{
+
 }
 
 void exec_rep ()
@@ -318,10 +349,53 @@ void exec_rep ()
     EBR ebr = getEBR(disks_mount[i].path, mbr.partitions[i_ext].part_start);
     getSpaceLogicalDetail(disks_mount[i].path, ebr, mbr.partitions[i_ext].part_start + mbr.partitions[i_ext].part_size);
 
+    /* FASE 1 */
     if (strcmp(values.name, "disk") == 0)
         reportDisk(mbr, disks_mount[i].path);
     else if (strcmp(values.name, "mbr") == 0)
+    {
         reportMBR(mbr, disks_mount[i].path);
+        return;
+    }
+
+    /* FASE 2 */
+    
+    if (strcmp(values.name, "inode") == 0)
+    {
+        reportInodes();
+    }
+    else if (strcmp(values.name, "journaling") == 0)
+    {
+        
+    }
+    else if (strcmp(values.name, "block") == 0)
+    {
+        reportBlocks();
+    }
+    else if (strcmp(values.name, "bm_inode") == 0)
+    {
+        reportBitmap();
+    }
+    else if (strcmp(values.name, "bm_block") == 0)
+    {
+        reportBitmap();
+    }
+    else if (strcmp(values.name, "tree") == 0)
+    {
+        reportTree();
+    }
+    else if (strcmp(values.name, "sb") == 0)
+    {
+        reportSuperBlock();
+    }
+    else if (strcmp(values.name, "file") == 0)
+    {
+
+    }
+    else if (strcmp(values.name, "ls") == 0)
+    {
+
+    }
     
     clearSpaceDisk();
 }

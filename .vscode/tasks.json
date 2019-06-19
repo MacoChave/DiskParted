@@ -10,6 +10,7 @@
             "args": [
                 "main.c",
                 "-g",
+                "-lm",
                 "-o",
                 "build/disk_parted.out"
             ]

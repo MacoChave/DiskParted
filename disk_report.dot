@@ -7,8 +7,8 @@ digraph {
 			<tr>
 				<td bgcolor="crimson" rowspan="2">MBR<br/>0.0003 % de Disco</td>
 				<td bgcolor="salmon" rowspan="2">Part12<br/>9.14 % de Disco</td>
-				<td bgcolor="salmon" rowspan="2">Part13<br/>11.09 % de Disco</td>
-				<td bgcolor="snow2" rowspan="2">Free<br/>7.19 % de Disco</td>
+				<td bgcolor="salmon" rowspan="2">Part13<br/>9.14 % de Disco</td>
+				<td bgcolor="salmon" rowspan="2">Part14<br/>9.14 % de Disco</td>
 				<td bgcolor="firebrick1" colspan="20">Extendida</td>
 				<td bgcolor="snow2" rowspan="2">Free<br/>38.67 % de Disco</td>
 			</tr>

@@ -1,6 +1,7 @@
 #ifndef MKDISK_H
 #define MKDISK_H
 
+#include <time.h>
 #include "../var/globals.h"
 #include "../fileManager/manager.h"
 
@@ -51,7 +52,7 @@ void exec_mkdisk()
         memset(mbr.partitions[i].part_name, 0, 16);
     }
 
-    time_t currentDate = time(NULL);
+    __time_t currentDate = time(NULL);
     struct tm * date = localtime(&currentDate);
     strftime(mbr.mbr_creation, sizeof(mbr.mbr_creation) - 1, "%d/%m/%y %H:%M", date);
 

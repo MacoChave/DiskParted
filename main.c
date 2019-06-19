@@ -6,6 +6,7 @@
 int main() 
 {
     initDisksMount();
+    initPermissionList();
     clearValues();
     printf("---> Disk Parted <---\n");
     char input[999] = "";
