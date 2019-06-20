@@ -10,6 +10,8 @@
 #include "command/mount.h"
 #include "command/unmount.h"
 #include "command/mkfs.h"
+#include "command/login.h"
+#include "command/logout.h"
 #include "command/rep.h"
 
 extern void exec_exec();
@@ -338,6 +340,12 @@ int loadCommand(char input[])
                 break;
             case _MKFS_:
                 exec_mkfs();
+                break;
+            case _LOGIN_:
+                exec_login();
+                break;
+            case _LOGOUT_:
+                exec_logout();
                 break;
             case _PAUSE_:
                 {char conf[999] = {0};

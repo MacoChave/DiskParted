@@ -5,6 +5,7 @@
 
 int main() 
 {
+    initSessionVar();
     initDisksMount();
     initPermissionList();
     clearValues();

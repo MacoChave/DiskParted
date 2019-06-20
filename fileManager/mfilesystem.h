@@ -3,6 +3,73 @@
 
 #include "../var/globals.h"
 #include "../fileManager/manager.h"
+char * readFile_Indirect (BlockPointer * current, int level)
+{
+    char * text = (char *) calloc(4368, sizeof(char));
+
+    for (int i = 0; i < 16; i++)
+    {
+        if (level > 1)
+        {
+            if (current->pointers[i] == -1)
+                continue;
+            else
+            {
+                BlockPointer * bp = (BlockPointer *) getBlock(current->pointers[i], _BKPOINTER_);
+                strcat(text, readFile_Indirect(bp, level - 1));
+            }
+        }
+        else
+        {
+            if (current->pointers[i] == -1)
+                continue;
+            else
+            {
+                BlockFile * bf = (BlockFile *) getBlock(current->pointers[i], _BKFILE_);
+                strcat(text, bf->content);
+            }
+        }
+    }
+    
+    return text;
+}
+
+char * readFile (Inode * current)
+{
+    int level = 1;
+    char * text = (char *)calloc(280320, sizeof(char));
+
+    for (int i = 0; i < 15; i++)
+    {
+        if (i < 12)
+        {
+            /* BLOQUES DIRECTOS */
+            if (current->block[i] == -1)
+                continue;
+            else
+            {
+                BlockFile * bf = (BlockFile *) getBlock(current->block[i], _BKFILE_);
+                strcat(text, bf->content);
+            }
+        }
+        else
+        {
+            /* BLOQUES INDIRECTOS */
+            if (current->block[i] == -1)
+                continue;
+            else
+            {
+                BlockPointer * bp = newBlockPointer();
+                bp = (BlockPointer *) getBlock(current->block[i], _BKPOINTER_);
+                strcat(text, readFile_Indirect(bp, level));
+            }
+            
+            level++;
+        }   
+    }
+
+    return text;
+}
 
 int writeFile_Indirect (char text[], BlockPointer * current, int no_current, int level)
 {

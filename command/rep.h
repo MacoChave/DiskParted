@@ -332,7 +332,7 @@ void exec_rep ()
     int i = getDiskById(id_i);
     int j = getPartById(id_a, i);
 
-    if (i == _ERROR_ || j == _ERROR_)
+    if (j == _ERROR_)
     {
         printf(ANSI_COLOR_RED "[e] La partición %s no se encuentra montada\n" ANSI_COLOR_RESET, values.id);
         return;
@@ -359,6 +359,21 @@ void exec_rep ()
     }
 
     /* FASE 2 */
+    Partition part;
+    int a;
+    for (a = 0; a < 4; a++)
+    {
+        if (mbr.partitions[a].part_type == 'p')
+        {
+            if (strcmp(mbr.partitions[a].part_name, disks_mount[i].parts_mount[j].mount_name) == 0)
+            {
+                part = mbr.partitions[a];
+                break;
+            }
+        }
+    }
+
+    if (i == 4) return;
     
     if (strcmp(values.name, "inode") == 0)
     {

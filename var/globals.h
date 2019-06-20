@@ -267,7 +267,7 @@ BlockPointer * newBlockPointer ()
 
 void initSessionVar ()
 {
-    sessionVar.id_user = 0;
+    sessionVar.id_user = -1;
     sessionVar.part_start = 0;
     memset(sessionVar.path, 0, 300);
 }

@@ -14,6 +14,8 @@ void settingFileSystem ()
 {
     /* CREAR INODO ROOT Y PRIMER BLOQUE */
     Inode * root = newInode(_DIRTYPE_);
+    root->uid = 0;
+    root->gid = 0;
     BlockDir* bd = newBlockDir(0, 0);
     root->block[0] = 0;
     saveInode(0, root);
@@ -102,6 +104,11 @@ void settingSuperBlock (Partition part)
 
 void exec_mkfs ()
 {
+    if (sessionVar.id_user >= 0)
+    {
+        printf(ANSI_COLOR_RED "[e] Cierre sesión antes de formatear\n" ANSI_COLOR_RESET);
+        return;
+    }
     if (strlen(values.id) == 0)
     {
         printf(ANSI_COLOR_RED "[e] Se requiere id de partición\n" ANSI_COLOR_RESET);
@@ -127,7 +134,7 @@ void exec_mkfs ()
     {
         if (mbr.partitions[a].part_type == 'p')
         {
-            if (strcmp(mbr.partitions[a].part_name, disks_mount[a].parts_mount[a].mount_name) == 0)
+            if (strcmp(mbr.partitions[a].part_name, disks_mount[i].parts_mount[j].mount_name) == 0)
             {
                 part = mbr.partitions[a];
                 break;
@@ -147,6 +154,10 @@ void exec_mkfs ()
     settingJounal(part.part_start);
     settingBitmaps();
     settingFileSystem();
+
+    sessionVar.part_start = 0;
+    memset(sessionVar.path, 0, 300);
+    sessionVar.id_user = -1;
 }
 
 #endif
